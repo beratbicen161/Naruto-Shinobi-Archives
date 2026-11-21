@@ -1,2 +1,510 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
+
+:root {
+  font-family: 'Inter', sans-serif;
+  color: #F1E3C6;
+  background-color: #15191F;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --page-bg: #15191F;
+  --card-bg: #303844;
+  --text-primary: #F1E3C6;
+  --text-secondary: #D1D5DB;
+  --accent: #F97316;
+}
+
+[data-theme="light"] {
+  --page-bg: #F5EBD7;
+  --card-bg: #FFF9ED;
+  --text-primary: #292524;
+  --text-secondary: #57534E;
+  --accent: #C2410C;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  line-height: 1.5;
+  background-color: var(--page-bg);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Cinzel', serif;
+  line-height: 1.2;
+}
+
+button, a {
+  transition: all 0.2s ease;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid #F97316;
+  outline-offset: 3px;
+}
+
+::selection {
+  background: #F97316;
+  color: #15191F;
+}
+
+/* Light Mode */
+
+[data-theme="light"] .bg-\[\#15191F\] {
+  background-color: var(--page-bg);
+}
+
+[data-theme="light"] .bg-\[\#303844\] {
+  background-color: var(--card-bg);
+}
+
+[data-theme="light"] .text-\[\#F1E3C6\] {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .text-gray-300,
+[data-theme="light"] .text-gray-400 {
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .text-orange-400 {
+  color: var(--accent);
+}
+
+/* Hero Section */
+
+[data-theme="light"] .hero-title {
+  color: #F1E3C6;
+}
+
+[data-theme="light"] .hero-description {
+  color: #F5F5F4;
+}
+
+/* Ninja Scrolls */
+
+.ninja-scroll {
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+  transform-origin: center center;
+
+  animation: ninja-scroll-appear 0.8s ease-out both;
+  animation-delay: var(--scroll-delay);
+
+  transition:
+    transform 0.35s ease,
+    filter 0.35s ease;
+}
+
+.ninja-scroll:hover {
+  z-index: 10;
+  transform: translateY(-12px) scale(1.035);
+  filter: drop-shadow(0 0 14px var(--chakra-color));
+}
+
+.ninja-scroll:focus-visible {
+  outline: 3px solid var(--chakra-color);
+  outline-offset: 4px;
+}
+
+.ninja-scroll img {
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Scroll Appearance Animation */
+
+@keyframes ninja-scroll-appear {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scaleY(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+/* Mobile Adjustments */
+
+@media (max-width: 639px) {
+  .ninja-scroll {
+    max-width: 280px;
+  }
+}
+
+/* Chakra Glow */
+
+.ninja-scroll::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 8%;
+  border-radius: 35%;
+  background: var(--chakra-color);
+  opacity: 0.15;
+  filter: blur(22px);
+  animation: chakra-pulse 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Moving Chakra Aura */
+
+.ninja-scroll::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 5%;
+  border-radius: 30%;
+
+  background:
+    radial-gradient(
+      ellipse at 30% 30%,
+      var(--chakra-color),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 70% 75%,
+      var(--chakra-color),
+      transparent 55%
+    );
+
+  opacity: 0.12;
+  filter: blur(18px);
+  animation: chakra-flow 5s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.ninja-scroll:hover::before {
+  opacity: 0.45;
+  animation-duration: 1.5s;
+}
+
+.ninja-scroll:hover::after {
+  opacity: 0.35;
+  animation-duration: 2s;
+}
+
+/* Chakra Pulse */
+
+@keyframes chakra-pulse {
+  0%, 100% {
+    opacity: 0.12;
+    transform: scale(0.95);
+  }
+
+  50% {
+    opacity: 0.3;
+    transform: scale(1.08);
+  }
+}
+
+/* Chakra Flow */
+
+@keyframes chakra-flow {
+  0% {
+    transform: translate(-6px, 8px) rotate(-4deg);
+  }
+
+  50% {
+    transform: translate(8px, -8px) rotate(4deg);
+  }
+
+  100% {
+    transform: translate(-4px, -12px) rotate(-3deg);
+  }
+}
+
+/* Chakra Particles */
+
+.chakra-particles {
+  position: absolute;
+  inset: -7%;
+  z-index: 2;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.chakra-particle {
+  position: absolute;
+  bottom: 10%;
+  left: calc(10% + var(--particle-index) * 11%);
+
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+
+  background: var(--chakra-color);
+
+  box-shadow:
+    0 0 7px var(--chakra-color),
+    0 0 15px var(--chakra-color);
+
+  opacity: 0;
+
+  animation:
+    chakra-particle-rise
+    var(--particle-duration)
+    ease-in-out
+    var(--particle-delay)
+    infinite;
+}
+
+.ninja-scroll:hover .chakra-particle {
+  width: 7px;
+  height: 7px;
+
+  box-shadow:
+    0 0 10px var(--chakra-color),
+    0 0 22px var(--chakra-color);
+}
+
+@keyframes chakra-particle-rise {
+  0% {
+    transform: translate(0, 10px) scale(0.4);
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.65;
+  }
+
+  65% {
+    opacity: 0.85;
+  }
+
+  100% {
+    transform: translate(12px, -170px) scale(0.2);
+    opacity: 0;
+  }
+}
+
+/* Chakra Emblems */
+
+.chakra-emblem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: clamp(48px, 5vw, 88px);
+  height: clamp(48px, 5vw, 88px);
+  flex-shrink: 0;
+
+  isolation: isolate;
+}
+
+.chakra-emblem-image {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+  transition: transform 0.3s ease;
+}
+
+.ninja-scroll:hover .chakra-emblem-image {
+  scale: 1.1;
+}
+
+.chakra-emblem-ring {
+  position: absolute;
+  inset: -12%;
+  z-index: 1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Characters - Orange Chakra */
+
+.chakra-emblem--characters .chakra-emblem-image {
+  animation: konoha-chakra 3s ease-in-out infinite;
+}
+
+@keyframes konoha-chakra {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px #F97316);
+  }
+
+  50% {
+    filter: drop-shadow(0 0 12px #F97316);
+  }
+}
+
+/* Clans - Uchiha Red Glow */
+
+.chakra-emblem--clans .chakra-emblem-image {
+  animation: uchiha-glow 2.5s ease-in-out infinite;
+}
+
+@keyframes uchiha-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px #DC2626);
+  }
+
+  50% {
+    filter:
+      drop-shadow(0 0 10px #DC2626)
+      drop-shadow(0 0 16px #991B1B);
+  }
+}
+
+/* Villages - Floating Energy */
+
+.chakra-emblem--villages .chakra-emblem-image {
+  animation: village-float 3.5s ease-in-out infinite;
+}
+
+@keyframes village-float {
+  0%, 100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 3px #65A30D);
+  }
+
+  50% {
+    transform: translateY(-5px);
+    filter: drop-shadow(0 0 10px #65A30D);
+  }
+}
+
+/* Jutsus - Rasengan Chakra Vortex */
+
+.chakra-emblem--jutsus .chakra-emblem-ring {
+  inset: -22%;
+  border: none;
+  border-radius: 50%;
+
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(56, 189, 248, 0.1) 40deg,
+    rgba(125, 211, 252, 0.85) 85deg,
+    transparent 125deg,
+    rgba(14, 165, 233, 0.6) 210deg,
+    transparent 265deg,
+    rgba(186, 230, 253, 0.7) 320deg,
+    transparent 360deg
+  );
+
+  filter: blur(5px);
+  opacity: 0.65;
+
+  box-shadow: none;
+  animation: rasengan-vortex 5s linear infinite;
+}
+
+.chakra-emblem--jutsus::after {
+  content: "";
+  position: absolute;
+  inset: -14%;
+  z-index: 1;
+  border-radius: 50%;
+
+  background: conic-gradient(
+    from 180deg,
+    transparent,
+    rgba(14, 165, 233, 0.55),
+    transparent,
+    rgba(125, 211, 252, 0.75),
+    transparent
+  );
+
+  filter: blur(9px);
+  opacity: 0.7;
+
+  animation: rasengan-vortex-reverse 3s linear infinite;
+  pointer-events: none;
+}
+
+.chakra-emblem--jutsus .chakra-emblem-image {
+  filter:
+    drop-shadow(0 0 8px #38BDF8)
+    drop-shadow(0 0 14px #0284C7);
+}
+
+.ninja-scroll:hover .chakra-emblem--jutsus .chakra-emblem-ring {
+  animation-duration: 1.5s;
+  opacity: 0.95;
+}
+
+.ninja-scroll:hover .chakra-emblem--jutsus::after {
+  animation-duration: 1s;
+}
+
+@keyframes rasengan-vortex {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rasengan-vortex-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* Bingo Book - Purple Mystery */
+
+.chakra-emblem--bingo .chakra-emblem-image {
+  animation: bingo-mystery 4s ease-in-out infinite;
+}
+
+@keyframes bingo-mystery {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px #9333EA);
+  }
+
+  50% {
+    filter:
+      drop-shadow(0 0 12px #9333EA)
+      drop-shadow(0 0 18px #6B21A8);
+  }
+}
+
+/* Reduced Motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .ninja-scroll,
+  .ninja-scroll::before,
+  .ninja-scroll::after,
+  .chakra-particle,
+  .chakra-emblem-image,
+  .chakra-emblem-ring,
+  .chakra-emblem--jutsus::after {
+    animation: none !important;
+  }
+
+  .ninja-scroll,
+  .chakra-emblem-image {
+    transition: none;
+  }
+
+  .ninja-scroll:hover {
+    transform: none;
+  }
+
+  .ninja-scroll:hover .chakra-emblem-image {
+    scale: 1;
+  }
+}
