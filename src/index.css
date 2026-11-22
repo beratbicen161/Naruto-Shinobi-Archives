@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Reggae+One&family=Teko:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -34,9 +34,30 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
+/* Typography */
+
 h1, h2, h3, h4 {
-  font-family: 'Cinzel', serif;
-  line-height: 1.2;
+  font-family: 'Reggae One', cursive;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+
+.shinobi-logo {
+  font-family: 'Teko', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.shinobi-subtitle {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+}
+
+.shinobi-nav-link {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.03em;
 }
 
 button, a {
@@ -482,6 +503,230 @@ button {
   }
 }
 
+/* Shinobi Animated Background */
+
+.shinobi-animated-area {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--page-bg);
+}
+
+.shinobi-animated-content {
+  position: relative;
+  z-index: 1;
+}
+
+.shinobi-background {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.shinobi-background-glow {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse at 20% 25%,
+      rgba(249, 115, 22, 0.12),
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 80% 60%,
+      rgba(56, 189, 248, 0.10),
+      transparent 45%
+    );
+
+  pointer-events: none;
+}
+
+/* Background Chakra Particles */
+
+.shinobi-bg-chakra {
+  position: absolute;
+  z-index: 2;
+  border-radius: 50%;
+  opacity: 0;
+
+  filter: brightness(1.5);
+
+  animation-name: shinobi-chakra-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+
+  pointer-events: none;
+}
+
+@keyframes shinobi-chakra-float {
+  0% {
+    transform: translate(0, 40px) scale(0.5);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  45% {
+    transform: translate(15px, -60px) scale(1.5);
+    opacity: 0.95;
+  }
+
+  75% {
+    opacity: 0.85;
+  }
+
+  100% {
+    transform: translate(-20px, -220px) scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* Ninja Seals */
+
+.shinobi-bg-seal {
+  position: absolute;
+  z-index: 1;
+
+  font-family: serif;
+  font-size: clamp(40px, 5vw, 75px);
+  font-weight: bold;
+
+  color: #F97316;
+
+  text-shadow:
+    0 0 12px rgba(249, 115, 22, 0.65),
+    0 0 30px rgba(249, 115, 22, 0.35);
+
+  opacity: 0;
+
+  animation: shinobi-seal-appear 14s ease-in-out infinite;
+
+  pointer-events: none;
+}
+
+@keyframes shinobi-seal-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(25px) rotate(-8deg) scale(0.8);
+  }
+
+  20% {
+    opacity: 0.35;
+  }
+
+  40% {
+    opacity: 0.5;
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+
+  60% {
+    opacity: 0.35;
+  }
+
+  80% {
+    opacity: 0;
+    transform: translateY(-30px) rotate(8deg) scale(1.1);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Will of Fire Embers */
+
+.shinobi-bg-ember {
+  position: absolute;
+  z-index: 2;
+
+  bottom: 15%;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #FDBA74;
+
+  box-shadow:
+    0 0 10px #F97316,
+    0 0 22px rgba(249, 115, 22, 0.85),
+    0 0 35px rgba(249, 115, 22, 0.4);
+
+  opacity: 0;
+
+  animation-name: shinobi-ember-rise;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  pointer-events: none;
+}
+
+@keyframes shinobi-ember-rise {
+  0% {
+    transform: translate(0, 0) scale(0.5);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  35% {
+    transform: translate(20px, -160px) scale(1.2);
+    opacity: 0.9;
+  }
+
+  65% {
+    transform: translate(-15px, -350px) scale(0.8);
+    opacity: 0.8;
+  }
+
+  85% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translate(45px, -650px) scale(0.2);
+    opacity: 0;
+  }
+}
+
+/* Animated Background Light Mode */
+
+[data-theme="light"] .shinobi-background-glow {
+  opacity: 0.65;
+}
+
+[data-theme="light"] .shinobi-bg-seal {
+  color: #C2410C;
+
+  text-shadow:
+    0 0 12px rgba(194, 65, 12, 0.35),
+    0 0 25px rgba(194, 65, 12, 0.2);
+}
+
+[data-theme="light"] .shinobi-bg-chakra {
+  filter: brightness(0.85);
+}
+
+/* Mobile Performance */
+
+@media (max-width: 639px) {
+  .shinobi-bg-seal {
+    font-size: 40px;
+  }
+
+  .shinobi-bg-chakra:nth-of-type(2n),
+  .shinobi-bg-ember:nth-of-type(2n) {
+    display: none;
+  }
+}
+
 /* Reduced Motion */
 
 @media (prefers-reduced-motion: reduce) {
@@ -491,7 +736,10 @@ button {
   .chakra-particle,
   .chakra-emblem-image,
   .chakra-emblem-ring,
-  .chakra-emblem--jutsus::after {
+  .chakra-emblem--jutsus::after,
+  .shinobi-bg-chakra,
+  .shinobi-bg-ember,
+  .shinobi-bg-seal {
     animation: none !important;
   }
 
@@ -506,5 +754,336 @@ button {
 
   .ninja-scroll:hover .chakra-emblem-image {
     scale: 1;
+  }
+
+  .shinobi-bg-chakra,
+  .shinobi-bg-ember,
+  .shinobi-bg-seal {
+    opacity: 0 !important;
+  }
+}
+
+
+/* Navbar Chakra Pulse */
+
+.navbar-logo-chakra {
+  position: relative;
+  isolation: isolate;
+  animation: navbar-logo-pulse 3s ease-in-out infinite;
+}
+
+.navbar-logo-chakra::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  z-index: -1;
+  border: 1px solid rgba(249, 115, 22, 0.55);
+  border-radius: 20px;
+  opacity: 0;
+  animation: navbar-logo-ring 3s ease-out infinite;
+}
+
+@keyframes navbar-logo-pulse {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(249, 115, 22, 0.15);
+  }
+
+  50% {
+    box-shadow:
+      0 0 18px rgba(249, 115, 22, 0.55),
+      0 0 32px rgba(249, 115, 22, 0.2);
+  }
+}
+
+@keyframes navbar-logo-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+
+  35% {
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Navigation Chakra Trail */
+
+.navbar-chakra-link {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.navbar-chakra-link::after {
+  content: "";
+  position: absolute;
+  bottom: 3px;
+  left: 15%;
+  width: 70%;
+  height: 2px;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #F97316,
+    #FDBA74,
+    #F97316,
+    transparent
+  );
+
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.8);
+
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.35s ease;
+}
+
+.navbar-chakra-link:hover::after,
+.navbar-chakra-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.navbar-chakra-active {
+  animation: navbar-active-glow 3s ease-in-out infinite;
+}
+
+.navbar-chakra-active::after {
+  transform: scaleX(0.8);
+  opacity: 0.75;
+}
+
+@keyframes navbar-active-glow {
+  0%, 100% {
+    box-shadow: 0 0 4px rgba(249, 115, 22, 0.15);
+  }
+
+  50% {
+    box-shadow:
+      0 0 12px rgba(249, 115, 22, 0.45),
+      inset 0 0 8px rgba(249, 115, 22, 0.12);
+  }
+}
+
+/* Floating Navbar Chakra */
+
+.shinobi-navbar {
+  isolation: isolate;
+}
+
+.navbar-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.navbar-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  opacity: 0;
+
+  animation-name: navbar-chakra-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes navbar-chakra-float {
+  0% {
+    transform: translateY(12px) scale(0.5);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0.75;
+  }
+
+  65% {
+    opacity: 0.55;
+  }
+
+  100% {
+    transform: translate(18px, -35px) scale(0.2);
+    opacity: 0;
+  }
+}
+
+/* Theme Chakra Transformation */
+
+.navbar-theme-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar-theme-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle,
+    rgba(249, 115, 22, 0.35),
+    transparent 75%
+  );
+  opacity: 0;
+  pointer-events: none;
+}
+
+.navbar-theme-button:active::before {
+  opacity: 1;
+}
+
+.navbar-theme-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: navbar-theme-transform 0.55s ease-out both;
+}
+
+@keyframes navbar-theme-transform {
+  0% {
+    opacity: 0;
+    transform: rotate(-120deg) scale(0.4);
+    filter: drop-shadow(0 0 12px #F97316);
+  }
+
+  65% {
+    opacity: 1;
+    transform: rotate(15deg) scale(1.2);
+    filter: drop-shadow(0 0 8px #F97316);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+    filter: none;
+  }
+}
+
+/* Navbar Light Mode */
+
+[data-theme="light"] .shinobi-navbar {
+  background-color: var(--page-bg);
+}
+
+[data-theme="light"] .navbar-chakra-link {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .navbar-chakra-active {
+  color: var(--accent);
+}
+
+/* Navbar Reduced Motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar-logo-chakra,
+  .navbar-logo-chakra::before,
+  .navbar-chakra-active,
+  .navbar-particle,
+  .navbar-theme-icon {
+    animation: none !important;
+  }
+
+  .navbar-particle {
+    opacity: 0 !important;
+  }
+
+  .navbar-chakra-link::after {
+    transition: none;
+  }
+}
+
+
+/* Yin Yang Chakra Seal */
+
+.chakra-seal-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center;
+}
+
+.chakra-seal-icon svg {
+  width: 34px;
+  height: 34px;
+
+  filter: drop-shadow(
+    0 0 5px rgba(249, 115, 22, 0.45)
+  );
+
+  transition:
+    color 0.3s ease,
+    filter 0.3s ease;
+}
+
+/* Dark Mode Chakra */
+
+.chakra-seal-dark {
+  color: #F97316;
+}
+
+.chakra-seal-dark svg {
+  filter:
+    drop-shadow(0 0 5px rgba(249, 115, 22, 0.6))
+    drop-shadow(0 0 10px rgba(249, 115, 22, 0.25));
+}
+
+/* Light Mode Chakra */
+
+.chakra-seal-light {
+  color: #9A3412;
+}
+
+.chakra-seal-light svg {
+  filter: drop-shadow(
+    0 0 4px rgba(154, 52, 18, 0.35)
+  );
+}
+
+/* Chakra Seal Hover */
+
+.navbar-theme-button:hover .chakra-seal-icon svg {
+  filter:
+    drop-shadow(0 0 8px currentColor)
+    drop-shadow(0 0 14px currentColor);
+}
+
+/* Chakra Seal Transformation */
+
+.chakra-seal-icon {
+  animation: chakra-seal-transform 0.65s ease-out both;
+}
+
+@keyframes chakra-seal-transform {
+  0% {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0.45);
+  }
+
+  60% {
+    opacity: 1;
+    transform: rotate(20deg) scale(1.2);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+/* Reduced Motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .chakra-seal-icon {
+    animation: none !important;
   }
 }

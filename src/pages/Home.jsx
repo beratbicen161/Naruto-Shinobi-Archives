@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom'
 import ExploreSection from '../components/ExploreSection'
 import FeaturedShinobi from '../components/FeaturedShinobi'
+import ShinobiBackground from '../components/ShinobiBackground'
 
 function Home() {
   return (
@@ -53,9 +54,14 @@ function Home() {
         </div>
       </section>
 
-      <ExploreSection />
+      <div className="shinobi-animated-area">
+        <ShinobiBackground />
 
-      <FeaturedShinobi />
+        <div className="shinobi-animated-content">
+          <ExploreSection />
+          <FeaturedShinobi />
+        </div>
+      </div>
 
     </main>
   )
