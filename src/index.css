@@ -3361,3 +3361,1911 @@ button {
     letter-spacing: 0.5px;
   }
 }
+/* BINGO BOOK */
+
+.bingo-archive {
+  min-height: 100vh;
+  padding: 60px 20px 100px;
+  color: #e4cda5;
+  background:
+    radial-gradient(
+      ellipse at 50% 35%,
+      #60402b55,
+      transparent 65%
+    ),
+    repeating-linear-gradient(
+      2deg,
+      #211a17 0px,
+      #211a17 3px,
+      #281e19 4px,
+      #211a17 7px
+    );
+}
+
+.bingo-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.bingo-header > span {
+  color: #b87955;
+  font-size: 11px;
+  letter-spacing: 4px;
+}
+
+.bingo-header h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(36px, 6vw, 65px);
+  font-weight: bold;
+  letter-spacing: 8px;
+  margin: 15px 0;
+  text-shadow: 3px 3px #602e23;
+}
+
+.bingo-header p {
+  color: #ac9479;
+  font-size: 13px;
+  letter-spacing: 3px;
+}
+
+.bingo-closed-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  perspective: 1500px;
+}
+
+.bingo-cover {
+  position: relative;
+  width: min(320px, 85vw);
+  height: 440px;
+  padding: 35px;
+  cursor: pointer;
+  color: #c4a66d;
+  border: 6px solid #48271d;
+  border-radius: 5px 15px 15px 5px;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent 0px 3px,
+      #0000000d 4px 5px
+    ),
+    radial-gradient(
+      ellipse,
+      #704033,
+      #38201b 85%
+    );
+  box-shadow:
+    8px 5px 0 #b19a70,
+    13px 8px 0 #65422d,
+    25px 25px 40px #0009,
+    inset 0 0 40px #1c0e0c;
+  transition: transform 0.5s ease;
+  transform-origin: left center;
+}
+
+.bingo-cover:hover {
+  transform: rotateY(-12deg) translateY(-8px);
+}
+
+.bingo-cover-border {
+  position: absolute;
+  inset: 15px;
+  border: 4px double #b69a6155;
+  pointer-events: none;
+}
+
+.bingo-cover-symbol {
+  font-size: 70px;
+  margin-bottom: 20px;
+}
+
+.bingo-cover-title {
+  font-family: Georgia, serif;
+  font-size: 42px;
+  font-weight: bold;
+  line-height: 1.1;
+  letter-spacing: 6px;
+}
+
+.bingo-cover-subtitle {
+  margin-top: 20px;
+  font-size: 10px;
+  letter-spacing: 4px;
+}
+
+.bingo-cover-stamp {
+  display: inline-block;
+  padding: 10px 15px;
+  margin-top: 35px;
+  color: #c05d47;
+  border: 4px double #c05d47;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  transform: rotate(-12deg);
+}
+
+.bingo-open-hint {
+  margin-top: 40px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  animation: bingoPulse 2s infinite;
+}
+
+.bingo-open-container {
+  max-width: 1000px;
+  margin: auto;
+  animation: bingoOpen 0.8s ease both;
+}
+
+.bingo-book {
+  position: relative;
+  perspective: 1800px;
+  border: 9px solid #4c2b20;
+  border-radius: 8px;
+  background: #4c2b20;
+  box-shadow:
+    0 6px 0 #b39a70,
+    0 12px 0 #68442e,
+    0 30px 45px #0009;
+}
+
+.bingo-spread {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.bingo-page {
+  position: relative;
+  min-width: 0;
+  min-height: 570px;
+  padding: 30px 35px 50px;
+  color: #49301f;
+  background:
+    radial-gradient(
+      ellipse at top left,
+      #79532b44,
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at bottom right,
+      #79532b55,
+      transparent 40%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px 5px,
+      #68442108 6px 7px
+    ),
+    #dfc89e;
+}
+
+.bingo-left-page {
+  box-shadow: inset -20px 0 25px -15px #56351e;
+}
+
+.bingo-right-page {
+  box-shadow: inset 20px 0 25px -15px #56351e;
+}
+
+.bingo-spine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #745334;
+  pointer-events: none;
+}
+
+.bingo-page-header {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #a18152;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.bingo-intro-symbol {
+  text-align: center;
+  font-size: 100px;
+  color: #8a6343;
+  margin-top: 35px;
+}
+
+.bingo-page-title {
+  font-family: Georgia, serif;
+  font-size: clamp(22px, 3vw, 35px);
+  text-align: center;
+  font-weight: bold;
+  margin: 25px 0;
+}
+
+.bingo-introduction {
+  font-family: Georgia, serif;
+  text-align: center;
+  line-height: 1.8;
+  color: #78583c;
+}
+
+.bingo-secret-stamp {
+  width: fit-content;
+  margin: 40px auto;
+  padding: 10px 20px;
+  border: 4px double #963a2c;
+  color: #963a2c;
+  font-weight: bold;
+  letter-spacing: 4px;
+  transform: rotate(-12deg);
+}
+
+.bingo-index-section {
+  margin: 20px 0;
+}
+
+.bingo-index-section h3 {
+  color: #84382a;
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.bingo-index-link {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px dashed #a88a60;
+  text-align: left;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.bingo-index-link:hover {
+  color: #a12f22;
+}
+
+.bingo-wanted-title {
+  font-family: Georgia, serif;
+  text-align: center;
+  font-size: clamp(28px, 5vw, 50px);
+  font-weight: bold;
+  letter-spacing: 5px;
+  color: #793126;
+  margin: 20px 0;
+}
+
+.bingo-portrait {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 270px;
+  aspect-ratio: 4 / 5;
+  margin: auto;
+  border: 5px double #89633d;
+  background: #b09b7b;
+  overflow: hidden;
+}
+
+.bingo-portrait > span {
+  font-size: 90px;
+  color: #735e44;
+}
+
+.bingo-portrait-stamp {
+  position: absolute;
+  right: 5px;
+  bottom: 20px;
+  padding: 8px;
+  color: #8d3024;
+  border: 4px double #8d3024;
+  background: #dfc89e88;
+  font-size: 12px;
+  font-weight: bold;
+  transform: rotate(-12deg);
+}
+
+.bingo-character-name {
+  font-family: Georgia, serif;
+  font-size: clamp(20px, 3vw, 30px);
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.bingo-record-number {
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-top: 8px;
+}
+
+.bingo-information {
+  padding: 20px 0;
+  border-bottom: 1px solid #a1815266;
+}
+
+.bingo-information > span {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #8a6040;
+}
+
+.bingo-information h3 {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.bingo-reward {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 8px;
+  margin: 25px 0;
+  border: 4px double #8a392b;
+  color: #8a392b;
+  background: #8a392b08;
+}
+
+.bingo-reward > span {
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+.bingo-reward strong {
+  font-family: Georgia, serif;
+  font-size: clamp(22px, 4vw, 36px);
+}
+
+.bingo-reward small {
+  font-size: 9px;
+  font-style: italic;
+}
+
+.bingo-dossier-button {
+  width: 100%;
+  padding: 13px;
+  color: #e4cda5;
+  background: #573426;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.bingo-dossier-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.bingo-page-number {
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  color: #89633d;
+}
+
+.bingo-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 35px;
+}
+
+.bingo-navigation button,
+.bingo-bottom-navigation button {
+  padding: 12px 18px;
+  color: #e4cda5;
+  background: #43291f;
+  border: 1px solid #98734d;
+  border-radius: 4px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.bingo-navigation button:hover,
+.bingo-bottom-navigation button:hover {
+  background: #78402d;
+}
+
+.bingo-navigation button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.bingo-navigation > span {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.bingo-bottom-navigation {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.bingo-flip-next .bingo-right-page {
+  transform-origin: left center;
+  animation: bingoFlipNext 0.65s ease both;
+}
+
+.bingo-flip-previous .bingo-left-page {
+  transform-origin: right center;
+  animation: bingoFlipPrevious 0.65s ease both;
+}
+
+@keyframes bingoFlipNext {
+  from {
+    transform: rotateY(-90deg);
+    filter: brightness(0.6);
+  }
+
+  to {
+    transform: rotateY(0deg);
+    filter: brightness(1);
+  }
+}
+
+@keyframes bingoFlipPrevious {
+  from {
+    transform: rotateY(90deg);
+    filter: brightness(0.6);
+  }
+
+  to {
+    transform: rotateY(0deg);
+    filter: brightness(1);
+  }
+}
+
+@keyframes bingoOpen {
+  from {
+    opacity: 0;
+    transform: scale(0.85) rotateY(-15deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
+  }
+}
+
+@keyframes bingoPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@media (max-width: 600px) {
+  .bingo-archive {
+    padding: 35px 8px 60px;
+  }
+
+  .bingo-page {
+    padding: 18px 12px 35px;
+    min-height: 510px;
+  }
+
+  .bingo-book {
+    border-width: 5px;
+  }
+
+  .bingo-page-header {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .bingo-information h3 {
+    font-size: 14px;
+    overflow-wrap: anywhere;
+  }
+
+  .bingo-information > span {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .bingo-navigation button,
+  .bingo-bottom-navigation button {
+    padding: 10px 8px;
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  .bingo-index-section h3 {
+    font-size: 14px;
+  }
+
+  .bingo-index-link {
+    font-size: 11px;
+  }
+
+  .bingo-portrait-stamp {
+    font-size: 8px;
+    padding: 4px;
+  }
+
+  .bingo-dossier-button {
+    font-size: 9px;
+    letter-spacing: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bingo-archive *,
+  .bingo-archive *::before,
+  .bingo-archive *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+.bingo-right-page:has(.bingo-index-section) {
+  max-height: 620px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #89633d #dfc89e;
+}
+
+.bingo-right-page:has(.bingo-index-section)
+.bingo-page-number {
+  position: static;
+  display: block;
+  margin-top: 20px;
+}
+.bingo-character-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) sepia(25%) contrast(1.1);
+  transition:
+    filter 0.6s ease,
+    transform 0.6s ease;
+}
+
+.bingo-portrait {
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.bingo-portrait:hover {
+  transform: rotate(-1.5deg) scale(1.025);
+  box-shadow: 5px 8px 15px #49301f55;
+}
+
+.bingo-portrait:hover .bingo-character-image {
+  filter: grayscale(0%) sepia(0%) contrast(1);
+  transform: scale(1.05);
+}
+
+.bingo-portrait-stamp {
+  z-index: 2;
+  pointer-events: none;
+}
+
+.bingo-portrait-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  height: 100%;
+  color: #735e44;
+}
+
+.bingo-portrait-loading > span {
+  font-size: 80px;
+}
+
+.bingo-portrait-loading > small {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.bingo-dossier-button {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.bingo-dossier-button:not(:disabled):hover {
+  background: #8a392b;
+  box-shadow: 0 4px 12px #8a392b44;
+}
+
+.bingo-api-error {
+  margin-top: 12px;
+  color: #963a2c;
+  text-align: center;
+  font-size: 11px;
+}
+
+.bingo-api-error button {
+  margin-top: 8px;
+  padding: 6px 12px;
+  border: 1px solid #963a2c;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.bingo-api-error button:hover {
+  background: #963a2c;
+  color: #dfc89e;
+}
+/* BINGO BOOK - LEATHER COVER */
+
+.bingo-cover {
+  isolation: isolate;
+  border: 7px solid #392019;
+  border-radius: 5px 18px 18px 5px;
+
+  background:
+    radial-gradient(
+      ellipse at 25% 20%,
+      #a06a402b,
+      transparent 50%
+    ),
+    repeating-linear-gradient(
+      37deg,
+      #00000012 0px,
+      transparent 1px 4px
+    ),
+    repeating-linear-gradient(
+      125deg,
+      #00000015 0px,
+      transparent 1px 5px
+    ),
+    linear-gradient(
+      90deg,
+      #24130f,
+      #583426 12%,
+      #704536 50%,
+      #3c2119
+    );
+
+  box-shadow:
+    inset 12px 0 20px #160c09aa,
+    inset -5px 0 15px #160c0966,
+    inset 0 0 45px #160c09,
+    5px 3px 0 #c5ad83,
+    8px 5px 0 #a78d64,
+    11px 7px 0 #c5ad83,
+    15px 10px 0 #382019,
+    25px 30px 50px #000a;
+}
+
+.bingo-cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      #bc93662b,
+      transparent 15%
+    ),
+    radial-gradient(
+      circle at 90% 85%,
+      #bc936633,
+      transparent 20%
+    ),
+    radial-gradient(
+      circle at 90% 10%,
+      #0006,
+      transparent 25%
+    );
+}
+
+.bingo-cover::after {
+  content: '';
+  position: absolute;
+  left: 9px;
+  top: 0;
+  bottom: 0;
+  width: 15px;
+
+  background: linear-gradient(
+    90deg,
+    #0005,
+    #c99a6322,
+    #0006
+  );
+
+  border-right: 1px solid #c99a6344;
+  pointer-events: none;
+}
+
+.bingo-cover-border {
+  inset: 22px;
+  border: 5px double #b89a5e99;
+
+  box-shadow:
+    0 0 0 4px #2b1815,
+    0 0 0 5px #a8894b55,
+    inset 0 0 0 4px #2b1815;
+}
+
+.bingo-cover-symbol {
+  color: #c3a366;
+
+  text-shadow:
+    0 1px 0 #f5d59a,
+    0 3px 2px #24130f,
+    0 0 20px #d6ad4922;
+}
+
+.bingo-cover-title {
+  color: #c9ac70;
+
+  text-shadow:
+    0 1px 0 #e8c991,
+    0 3px 2px #24130f,
+    0 5px 5px #0006;
+}
+
+.bingo-cover-stamp {
+  opacity: 0.85;
+  border-style: double;
+
+  text-shadow:
+    1px 1px 0 #30160f;
+}
+
+
+/* BINGO BOOK - AGED PARCHMENT */
+
+.bingo-page {
+  isolation: isolate;
+
+  background:
+    radial-gradient(
+      ellipse at 0% 0%,
+      #68401f66,
+      transparent 30%
+    ),
+    radial-gradient(
+      ellipse at 100% 100%,
+      #80512c66,
+      transparent 35%
+    ),
+    radial-gradient(
+      ellipse at 75% 20%,
+      #b28b4b33,
+      transparent 25%
+    ),
+    radial-gradient(
+      ellipse at 20% 80%,
+      #8b623c22,
+      transparent 30%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px 3px,
+      #72532c09 4px 5px
+    ),
+    linear-gradient(
+      120deg,
+      #d0b383,
+      #eddbb4 45%,
+      #d6bc8d
+    );
+}
+
+.bingo-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  box-shadow:
+    inset 0 0 35px #76502e66,
+    inset 0 0 8px #79512c99;
+}
+
+.bingo-page::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  z-index: -1;
+  border: 1px solid #8e694233;
+  pointer-events: none;
+}
+
+.bingo-left-page {
+  border-radius: 3px 0 0 3px;
+
+  box-shadow:
+    inset -30px 0 30px -20px #503019,
+    inset 3px 0 8px #79512c44;
+}
+
+.bingo-right-page {
+  border-radius: 0 3px 3px 0;
+
+  box-shadow:
+    inset 30px 0 30px -20px #503019,
+    inset -3px 0 8px #79512c44;
+}
+
+
+/* BINGO BOOK - BINDING */
+
+.bingo-book {
+  border: 10px solid #4c2b20;
+
+  box-shadow:
+    0 3px 0 #d6bc8d,
+    0 5px 0 #9d7d52,
+    0 7px 0 #d6bc8d,
+    0 9px 0 #9d7d52,
+    0 11px 0 #c7a979,
+    0 15px 0 #382019,
+    0 35px 55px #0009;
+}
+
+.bingo-spine {
+  width: 14px;
+  transform: translateX(-50%);
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #59391d66,
+    #432714aa,
+    #59391d66,
+    transparent
+  );
+
+  z-index: 5;
+}
+
+
+/* BINGO BOOK - INTELLIGENCE STAMPS */
+
+.bingo-secret-stamp,
+.bingo-portrait-stamp {
+  font-family: Georgia, serif;
+  border: 4px double #923b2d;
+  color: #923b2d;
+  opacity: 0.85;
+  letter-spacing: 2px;
+
+  text-shadow:
+    1px 0 #923b2d44,
+    -1px 0 #923b2d22;
+}
+
+.bingo-portrait-stamp {
+  background: #dfc89e66;
+  transform: rotate(-14deg);
+}
+
+.bingo-reward {
+  position: relative;
+
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent 0px 5px,
+      #8a392b06 6px 7px
+    );
+
+  box-shadow:
+    inset 0 0 15px #8a392b11;
+}
+
+.bingo-reward::before,
+.bingo-reward::after {
+  content: '◆';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8a392b66;
+  font-size: 12px;
+}
+
+.bingo-reward::before {
+  left: 10px;
+}
+
+.bingo-reward::after {
+  right: 10px;
+}
+
+
+/* BINGO BOOK - PORTRAIT FRAME */
+
+.bingo-portrait {
+  border: 7px solid #c9ae81;
+  outline: 1px solid #89633d;
+
+  box-shadow:
+    3px 5px 8px #49301f44,
+    inset 0 0 15px #49301f33;
+
+  transform: rotate(-1deg);
+}
+
+.bingo-portrait:hover {
+  transform: rotate(1deg) scale(1.025);
+}
+
+.bingo-portrait::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  box-shadow:
+    inset 0 0 25px #49301f44;
+
+  pointer-events: none;
+}
+
+
+/* BINGO BOOK - BACKGROUND */
+
+.bingo-archive {
+  background:
+    radial-gradient(
+      ellipse at 50% 35%,
+      #b78c4930,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at center,
+      transparent 25%,
+      #0008 100%
+    ),
+    repeating-linear-gradient(
+      2deg,
+      #211a17 0px,
+      #211a17 3px,
+      #281e19 4px,
+      #211a17 7px
+    );
+}
+
+
+/* BINGO BOOK - RESPONSIVE */
+
+@media (max-width: 600px) {
+  .bingo-book {
+    border-width: 5px;
+  }
+
+  .bingo-spine {
+    width: 7px;
+  }
+
+  .bingo-portrait {
+    border-width: 4px;
+  }
+
+  .bingo-page::after {
+    inset: 5px;
+  }
+
+  .bingo-reward::before,
+  .bingo-reward::after {
+    display: none;
+  }
+}
+/* ANIME BINGO BOOK COVER */
+
+.bingo-cover {
+  position: relative;
+  display: block;
+  width: min(380px, 80vw);
+  height: auto;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  transform: rotate(-5deg);
+  transform-origin: center;
+  transition: transform 0.5s ease;
+}
+
+.bingo-cover::before,
+.bingo-cover::after {
+  display: none;
+}
+
+.bingo-cover-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  user-select: none;
+
+  filter: drop-shadow(
+    15px 20px 12px rgba(0, 0, 0, 0.55)
+  );
+
+  transition: filter 0.5s ease;
+}
+
+.bingo-cover:hover {
+  transform: translateY(-15px) rotate(0deg) scale(1.04);
+}
+
+.bingo-cover:hover .bingo-cover-image {
+  filter: drop-shadow(
+    20px 30px 18px rgba(0, 0, 0, 0.65)
+  );
+}
+
+.bingo-cover:active {
+  transform: scale(0.97);
+}
+
+.bingo-cover:focus-visible {
+  outline: 2px solid #e4cda5;
+  outline-offset: 8px;
+}
+
+.bingo-closed-container {
+  padding: 15px 0 30px;
+}
+
+.bingo-open-hint {
+  margin-top: 30px;
+  padding: 12px 25px;
+  background: #dfc89e;
+  color: #49301f;
+  font-family: Georgia, serif;
+  font-weight: bold;
+  letter-spacing: 3px;
+
+  clip-path: polygon(
+    3% 0,
+    98% 3%,
+    100% 90%,
+    97% 100%,
+    0 96%,
+    2% 50%
+  );
+}
+
+@media (max-width: 600px) {
+  .bingo-cover {
+    width: min(290px, 75vw);
+  }
+
+  .bingo-open-hint {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bingo-cover,
+  .bingo-cover-image {
+    transition: none;
+  }
+
+  .bingo-cover:hover {
+    transform: rotate(-5deg);
+  }
+}
+/* ANIME BINGO BOOK - INNER DESIGN */
+
+.bingo-open-container {
+  max-width: 1050px;
+}
+
+.bingo-book {
+  border: 10px solid #304d70;
+  border-radius: 7px 12px 12px 7px;
+  background: #304d70;
+
+  box-shadow:
+    0 3px 0 #e8d7b0,
+    0 5px 0 #a8997b,
+    0 7px 0 #e8d7b0,
+    0 9px 0 #a8997b,
+    0 12px 0 #d8c5a0,
+    0 16px 0 #233b56,
+    0 18px 0 #142638,
+    0 30px 40px #0008;
+}
+
+.bingo-page {
+  min-height: 620px;
+  color: #293b50;
+  font-family: Georgia, serif;
+
+  background:
+    radial-gradient(
+      ellipse at 5% 5%,
+      #b39b7333,
+      transparent 30%
+    ),
+    radial-gradient(
+      ellipse at 95% 95%,
+      #b39b7333,
+      transparent 30%
+    ),
+    #f0e2c1;
+}
+
+.bingo-page::before {
+  box-shadow:
+    inset 0 0 20px #8e795233,
+    inset 0 0 3px #66563d;
+}
+
+.bingo-page::after {
+  inset: 12px;
+  border: 1px solid #9b8b6e44;
+}
+
+.bingo-left-page {
+  border-radius: 5px 0 0 5px;
+
+  box-shadow:
+    inset -25px 0 25px -18px #66543b,
+    inset 3px 0 5px #9b8b6e44;
+}
+
+.bingo-right-page {
+  border-radius: 0 5px 5px 0;
+
+  box-shadow:
+    inset 25px 0 25px -18px #66543b,
+    inset -3px 0 5px #9b8b6e44;
+}
+
+.bingo-spine {
+  width: 18px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #66543b44,
+    #40392b99,
+    #66543b44,
+    transparent
+  );
+}
+
+
+/* ANIME PAGE HEADERS */
+
+.bingo-page-header {
+  color: #304d70;
+  font-family: Georgia, serif;
+  font-weight: bold;
+  font-size: 11px;
+  letter-spacing: 2px;
+  border-bottom: 2px solid #304d70;
+}
+
+.bingo-page-title {
+  color: #293b50;
+  font-weight: bold;
+}
+
+.bingo-wanted-title {
+  font-size: 0;
+  margin: 18px 0 22px;
+}
+
+.bingo-wanted-title::before {
+  content: '手配書';
+  display: block;
+  color: #973c30;
+  font-size: 42px;
+  font-weight: bold;
+  letter-spacing: 8px;
+  line-height: 1.3;
+}
+
+.bingo-wanted-title::after {
+  content: 'WANTED SHINOBI';
+  display: block;
+  color: #973c30;
+  font-size: 11px;
+  letter-spacing: 4px;
+  margin-top: 8px;
+}
+
+
+/* ARCHIVE PHOTOGRAPH */
+
+.bingo-portrait {
+  position: relative;
+  max-width: 255px;
+  aspect-ratio: 4 / 5;
+
+  border: 9px solid #f9edcf;
+  border-bottom-width: 22px;
+  outline: 1px solid #82745b;
+
+  background: #b8b3a6;
+
+  box-shadow:
+    3px 5px 0 #66563d33,
+    5px 8px 12px #66563d33;
+
+  transform: rotate(-3deg);
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.bingo-portrait::after {
+  box-shadow: inset 0 0 10px #49301f22;
+}
+
+.bingo-portrait:hover {
+  transform: rotate(0deg) scale(1.035);
+
+  box-shadow:
+    5px 10px 15px #66563d55;
+}
+
+.bingo-character-image {
+  filter: grayscale(100%) contrast(1.05);
+}
+
+.bingo-portrait:hover .bingo-character-image {
+  filter: grayscale(0%) contrast(1);
+  transform: scale(1.03);
+}
+
+.bingo-portrait-stamp {
+  right: 3px;
+  bottom: 15px;
+  color: #a23d31;
+  border: 3px double #a23d31;
+  background: #f0e2c188;
+  font-size: 11px;
+  letter-spacing: 2px;
+  transform: rotate(-12deg);
+}
+
+.bingo-character-name {
+  color: #293b50;
+  font-size: clamp(20px, 3vw, 32px);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 25px;
+}
+
+.bingo-record-number {
+  color: #776b57;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+
+/* SHINOBI INFORMATION */
+
+.bingo-information {
+  padding: 18px 0;
+  border-bottom: 1px dashed #ad9c7c;
+}
+
+.bingo-information > span {
+  color: #827057;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.bingo-information h3 {
+  color: #293b50;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+
+/* BOUNTY REWARD */
+
+.bingo-reward {
+  position: relative;
+  color: #9c3b30;
+  border: 5px double #9c3b30;
+  background: #d9c49c44;
+  padding: 20px 10px;
+  margin: 25px 0;
+
+  box-shadow:
+    inset 0 0 10px #9c3b3011;
+}
+
+.bingo-reward strong {
+  font-size: clamp(25px, 4vw, 40px);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.bingo-reward > span {
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.bingo-reward small {
+  color: #9c3b30;
+  font-size: 10px;
+}
+
+.bingo-reward::before,
+.bingo-reward::after {
+  content: '◆';
+  color: #9c3b3055;
+}
+
+
+/* DOSSIER BUTTON */
+
+.bingo-dossier-button {
+  display: block;
+  padding: 14px;
+  border: 1px solid #1b304a;
+  border-radius: 3px;
+  color: #f5e6c5;
+  background: #304d70;
+
+  box-shadow:
+    0 3px 0 #1b304a;
+
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.bingo-dossier-button:not(:disabled):hover {
+  color: #fff1d2;
+  background: #42688f;
+
+  box-shadow:
+    0 3px 0 #1b304a,
+    0 0 15px #42688f44;
+}
+
+
+/* TABLE OF CONTENTS */
+
+.bingo-intro-symbol {
+  color: #304d70;
+  font-size: 110px;
+
+  text-shadow:
+    2px 2px 0 #304d7022;
+}
+
+.bingo-introduction {
+  color: #665b49;
+  line-height: 1.9;
+}
+
+.bingo-index-section h3 {
+  color: #304d70;
+  font-weight: bold;
+  border-bottom: 2px solid #304d7055;
+  padding-bottom: 6px;
+}
+
+.bingo-index-link {
+  color: #293b50;
+  border-bottom: 1px dashed #b8a482;
+  padding: 9px 5px;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.bingo-index-link:hover {
+  color: #973c30;
+  background: #973c300d;
+}
+
+.bingo-secret-stamp {
+  color: #973c30;
+  border-color: #973c30;
+}
+
+.bingo-page-number {
+  color: #776b57;
+  font-size: 12px;
+}
+
+
+/* BOOK NAVIGATION */
+
+.bingo-navigation button,
+.bingo-bottom-navigation button {
+  background: #304d70;
+  color: #f5e6c5;
+  border: 1px solid #55779d;
+  border-radius: 3px;
+
+  box-shadow:
+    0 3px 0 #192c42;
+}
+
+.bingo-navigation button:not(:disabled):hover,
+.bingo-bottom-navigation button:hover {
+  background: #42688f;
+  color: #fff1d2;
+}
+
+.bingo-navigation button:disabled {
+  opacity: 0.35;
+}
+
+.bingo-navigation > span {
+  color: #e9d7b0;
+  font-weight: bold;
+}
+
+
+/* RESPONSIVE ANIME BOOK */
+
+@media (max-width: 600px) {
+  .bingo-book {
+    border-width: 5px;
+  }
+
+  .bingo-page {
+    min-height: 510px;
+    padding: 18px 12px 40px;
+  }
+
+  .bingo-page-header {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .bingo-wanted-title::before {
+    font-size: 27px;
+    letter-spacing: 3px;
+  }
+
+  .bingo-wanted-title::after {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .bingo-portrait {
+    border-width: 5px;
+    border-bottom-width: 12px;
+  }
+
+  .bingo-portrait-stamp {
+    font-size: 7px;
+    letter-spacing: 0;
+  }
+
+  .bingo-character-name {
+    font-size: 17px;
+  }
+
+  .bingo-information {
+    padding: 14px 0;
+  }
+
+  .bingo-information h3 {
+    font-size: 14px;
+  }
+
+  .bingo-information > span {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .bingo-reward {
+    padding: 12px 4px;
+  }
+
+  .bingo-reward strong {
+    font-size: 19px;
+    letter-spacing: 0;
+  }
+
+  .bingo-reward > span {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .bingo-reward small {
+    font-size: 8px;
+  }
+
+  .bingo-dossier-button {
+    font-size: 9px;
+    letter-spacing: 0;
+  }
+
+  .bingo-spine {
+    width: 8px;
+  }
+}
+/* PAGINATED BINGO BOOK INDEX */
+
+.bingo-right-page:has(.bingo-index-section) {
+  max-height: none;
+  overflow: visible;
+}
+
+.bingo-right-page:has(.bingo-index-section)
+.bingo-page-number {
+  position: absolute;
+  bottom: 15px;
+  margin: 0;
+}
+
+.bingo-category-page {
+  margin-top: 12px;
+}
+
+.bingo-category-symbol {
+  text-align: center;
+  color: #304d70;
+  font-size: 38px;
+  line-height: 1.2;
+}
+
+.bingo-category-title {
+  text-align: center;
+  color: #293b50;
+  font-family: Georgia, serif;
+  font-size: clamp(20px, 3vw, 30px);
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.bingo-category-count {
+  text-align: center;
+  color: #827057;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+}
+
+.bingo-index-records {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bingo-index-link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  padding: 7px 5px;
+  border-bottom: none;
+  color: #293b50;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.bingo-index-dots {
+  flex: 1;
+  min-width: 8px;
+  border-bottom: 2px dotted #ad9c7c;
+}
+
+.bingo-index-page-number {
+  color: #827057;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.bingo-index-link:hover {
+  color: #973c30;
+  background: #973c3010;
+}
+
+.bingo-index-link:hover .bingo-index-page-number {
+  color: #973c30;
+}
+
+.bingo-index-link:focus-visible {
+  outline: 2px solid #304d70;
+  outline-offset: 2px;
+}
+
+
+/* ARCHIVE INFORMATION PAGE */
+
+.bingo-archive-information {
+  text-align: center;
+}
+
+.bingo-archive-information .bingo-intro-symbol {
+  font-size: 65px;
+  margin: 20px 0 10px;
+}
+
+.bingo-archive-statistics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 25px 0;
+}
+
+.bingo-archive-statistics > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 5px;
+  border: 1px solid #304d7044;
+  background: #304d7008;
+}
+
+.bingo-archive-statistics strong {
+  color: #304d70;
+  font-size: 30px;
+}
+
+.bingo-archive-statistics span {
+  color: #827057;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.bingo-archive-disclaimer {
+  color: #827057;
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.7;
+  margin: 25px 0;
+}
+
+.bingo-archive-information .bingo-dossier-button {
+  width: 100%;
+}
+
+
+/* RESPONSIVE INDEX */
+
+@media (max-width: 600px) {
+  .bingo-category-symbol {
+    font-size: 28px;
+  }
+
+  .bingo-category-title {
+    font-size: 17px;
+  }
+
+  .bingo-category-count {
+    font-size: 8px;
+    letter-spacing: 0;
+  }
+
+  .bingo-index-link {
+    font-size: 11px;
+    padding: 7px 2px;
+    gap: 4px;
+  }
+
+  .bingo-index-page-number {
+    font-size: 10px;
+  }
+
+  .bingo-archive-statistics {
+    grid-template-columns: 1fr;
+    gap: 5px;
+    margin: 15px 0;
+  }
+
+  .bingo-archive-statistics > div {
+    padding: 8px 4px;
+  }
+
+  .bingo-archive-statistics strong {
+    font-size: 20px;
+  }
+
+  .bingo-archive-statistics span {
+    font-size: 8px;
+  }
+
+  .bingo-archive-disclaimer {
+    font-size: 10px;
+  }
+}
+/* REALISTIC 3D BINGO BOOK */
+
+.bingo-open-container {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.bingo-real-book {
+  position: relative;
+  width: 100%;
+  padding: 8px;
+  background: #304d70;
+  border: 2px solid #192c42;
+  border-radius: 8px;
+
+  box-shadow:
+    0 4px 0 #e8d7b0,
+    0 6px 0 #ad9c7c,
+    0 8px 0 #e8d7b0,
+    0 11px 0 #ad9c7c,
+    0 14px 0 #304d70,
+    0 17px 0 #192c42,
+    0 25px 45px #0007;
+}
+
+.bingo-pageflip {
+  margin: 0 auto;
+}
+
+.bingo-flip-page {
+  background: #f0e2c1;
+  overflow: hidden;
+}
+
+.bingo-flip-page .bingo-page {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-height: none;
+  padding: 24px 30px 40px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.bingo-flip-page .bingo-page-number {
+  position: absolute;
+  bottom: 12px;
+  margin: 0;
+}
+
+.bingo-flip-page .bingo-portrait {
+  max-width: 220px;
+}
+
+.bingo-flip-page .bingo-wanted-title {
+  margin: 12px 0 18px;
+}
+
+.bingo-flip-page .bingo-information {
+  padding: 14px 0;
+}
+
+.bingo-flip-page .bingo-reward {
+  margin: 20px 0;
+  padding: 14px 8px;
+}
+
+.bingo-flip-page .bingo-index-link {
+  padding: 6px 4px;
+  font-size: 14px;
+}
+
+.bingo-flip-page .bingo-category-symbol {
+  font-size: 30px;
+}
+
+.bingo-flip-page .bingo-category-count {
+  margin-bottom: 12px;
+}
+
+.bingo-flip-hint {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  color: #e9d7b0;
+  font-size: 10px;
+  letter-spacing: 3px;
+  opacity: 0.7;
+}
+
+.bingo-navigation button,
+.bingo-bottom-navigation button {
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.bingo-navigation button:not(:disabled):active,
+.bingo-bottom-navigation button:not(:disabled):active {
+  transform: translateY(2px);
+}
+
+.bingo-navigation button:disabled,
+.bingo-bottom-navigation button:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+@media (max-width: 800px) {
+  .bingo-flip-page .bingo-page {
+    padding: 14px 14px 28px;
+  }
+
+  .bingo-flip-page .bingo-portrait {
+    max-width: 150px;
+  }
+
+  .bingo-flip-page .bingo-information {
+    padding: 8px 0;
+  }
+
+  .bingo-flip-page .bingo-information h3 {
+    font-size: 15px;
+  }
+
+  .bingo-flip-page .bingo-index-link {
+    font-size: 11px;
+    padding: 3px 2px;
+  }
+
+  .bingo-flip-page .bingo-category-symbol {
+    font-size: 22px;
+  }
+
+  .bingo-flip-page .bingo-reward {
+    margin: 12px 0;
+    padding: 8px 4px;
+  }
+
+  .bingo-flip-page .bingo-reward strong {
+    font-size: 23px;
+  }
+
+  .bingo-flip-page .bingo-character-name {
+    margin-top: 15px;
+    font-size: 19px;
+  }
+
+  .bingo-real-book {
+    padding: 4px;
+  }
+
+  .bingo-flip-hint {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+}

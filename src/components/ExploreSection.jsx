@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom'
 
 const archives = [
@@ -33,16 +32,6 @@ const archives = [
     effect: 'villages',
   },
   {
-    title: 'Jutsus',
-    description: 'Master legendary techniques.',
-    path: '/jutsus',
-    symbol: '術',
-    image: '/images/scroll-jutsus.png',
-    emblem: '/images/emblem-jutsus.png',
-    color: '#0284C7',
-    effect: 'jutsus',
-  },
-  {
     title: 'Bingo Book',
     description: 'Investigate wanted shinobi.',
     path: '/bingo-book',
@@ -73,7 +62,7 @@ function ExploreSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-5 lg:gap-3">
+        <div className="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-3">
           {archives.map((archive, index) => (
             <Link
               key={archive.path}

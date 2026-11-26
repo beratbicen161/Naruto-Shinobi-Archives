@@ -8,7 +8,6 @@ import Clans from './pages/Clans'
 import ClanDetail from './pages/ClanDetail'
 import Villages from './pages/Villages'
 import VillageDetail from './pages/VillageDetail'
-import JutsuExplorer from './pages/JutsuExplorer'
 import BingoBook from './pages/BingoBook'
 import Favorites from './pages/Favorites'
 
@@ -51,11 +50,6 @@ function App() {
         <Route
           path="/villages/:id"
           element={<VillageDetail />}
-        />
-
-        <Route
-          path="/jutsus"
-          element={<JutsuExplorer />}
         />
 
         <Route

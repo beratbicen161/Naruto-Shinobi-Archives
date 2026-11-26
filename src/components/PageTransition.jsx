@@ -6,7 +6,6 @@ const mainPages = [
   '/characters',
   '/clans',
   '/villages',
-  '/jutsus',
   '/bingo-book',
   '/favorites',
 ]

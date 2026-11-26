@@ -1,4 +1,3 @@
-
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
@@ -8,7 +7,6 @@ const links = [
   { name: 'Characters', path: '/characters' },
   { name: 'Clans', path: '/clans' },
   { name: 'Villages', path: '/villages' },
-  { name: 'Jutsus', path: '/jutsus' },
   { name: 'Bingo Book', path: '/bingo-book' },
   { name: 'Favorites', path: '/favorites' },
 ]
