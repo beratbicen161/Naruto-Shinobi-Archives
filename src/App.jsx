@@ -1,3 +1,4 @@
+
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import PageTransition from './components/PageTransition'
@@ -10,6 +11,7 @@ import Villages from './pages/Villages'
 import VillageDetail from './pages/VillageDetail'
 import BingoBook from './pages/BingoBook'
 import Favorites from './pages/Favorites'
+import WatchGuide from './pages/WatchGuide'
 
 function App() {
   return (
@@ -55,6 +57,11 @@ function App() {
         <Route
           path="/bingo-book"
           element={<BingoBook />}
+        />
+
+        <Route
+          path="/watch-guide"
+          element={<WatchGuide />}
         />
 
         <Route

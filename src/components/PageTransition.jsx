@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
@@ -7,6 +8,7 @@ const mainPages = [
   '/clans',
   '/villages',
   '/bingo-book',
+  '/watch-guide',
   '/favorites',
 ]
 

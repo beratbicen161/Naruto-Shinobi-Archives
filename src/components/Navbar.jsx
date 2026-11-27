@@ -1,6 +1,8 @@
+
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
+import { useFavorites } from '../context/FavoritesContext'
 
 const links = [
   { name: 'Home', path: '/' },
@@ -8,6 +10,7 @@ const links = [
   { name: 'Clans', path: '/clans' },
   { name: 'Villages', path: '/villages' },
   { name: 'Bingo Book', path: '/bingo-book' },
+  { name: 'Watch Guide', path: '/watch-guide' },
   { name: 'Favorites', path: '/favorites' },
 ]
 
@@ -23,6 +26,7 @@ const navbarParticles = Array.from({ length: 12 }, (_, index) => ({
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const { theme, toggleTheme } = useTheme()
+  const { favorites } = useFavorites()
 
   const linkStyle = ({ isActive }) =>
     `shinobi-nav-link navbar-chakra-link relative rounded-xl border px-5 py-3 text-[16px] transition-all duration-300 ${
@@ -30,6 +34,23 @@ function Navbar() {
         ? 'navbar-chakra-active border-orange-500 bg-orange-500/15 text-orange-400'
         : 'border-transparent text-[#F1E3C6] hover:border-orange-500/40 hover:bg-orange-500/10 hover:text-orange-400'
     }`
+
+  function renderLinkContent(link) {
+    return (
+      <span className="inline-flex items-center gap-2">
+        {link.name}
+
+        {link.path === '/favorites' && favorites.length > 0 && (
+          <span
+            aria-label={`${favorites.length} saved characters`}
+            className="inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-yellow-500 px-1.5 text-xs font-bold text-[#15191F] shadow-[0_0_10px_rgba(234,179,8,0.35)]"
+          >
+            {favorites.length}
+          </span>
+        )}
+      </span>
+    )
+  }
 
   return (
     <header className="relative z-50 w-full px-3 pt-3 sm:px-5">
@@ -179,7 +200,7 @@ function Navbar() {
                 end={link.path === '/'}
                 className={linkStyle}
               >
-                {link.name}
+                {renderLinkContent(link)}
               </NavLink>
             ))}
           </div>
@@ -199,7 +220,7 @@ function Navbar() {
                   onClick={() => setMenuOpen(false)}
                   className={linkStyle}
                 >
-                  {link.name}
+                  {renderLinkContent(link)}
                 </NavLink>
               ))}
             </div>

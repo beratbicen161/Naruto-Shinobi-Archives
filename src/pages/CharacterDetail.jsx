@@ -1,8 +1,10 @@
+
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { getCharacterById } from '../services/api'
 import { formatValue } from '../utils/formatters'
 import { getVillageTheme } from '../utils/villageThemes'
+import { useFavorites } from '../context/FavoritesContext'
 
 import CharacterGallery from '../components/CharacterGallery'
 import InformationSection from '../components/InformationSection'
@@ -21,6 +23,7 @@ const tabs = [
 
 function CharacterDetail() {
   const { id } = useParams()
+  const { isFavorite, toggleFavorite } = useFavorites()
 
   const [character, setCharacter] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -98,6 +101,8 @@ function CharacterDetail() {
   }
 
   const theme = getVillageTheme(character)
+
+  const favorite = isFavorite(character.id)
 
   const personal = character.personal ?? {}
 
@@ -351,10 +356,17 @@ function CharacterDetail() {
 
               <button
                 type="button"
-                disabled
-                className="dossier-favorite mt-6 w-full cursor-not-allowed rounded-lg px-6 py-4 font-bold opacity-60 sm:w-fit"
+                onClick={() => toggleFavorite(character)}
+                aria-pressed={favorite}
+                className={`dossier-favorite mt-6 w-full rounded-lg px-6 py-4 font-bold transition-all duration-300 hover:scale-105 active:scale-95 sm:w-fit ${
+                  favorite
+                    ? 'border-yellow-400! bg-yellow-400/15! text-yellow-400! shadow-[0_0_20px_rgba(250,204,21,0.2)]'
+                    : ''
+                }`}
               >
-                ☆ ADD TO FAVORITES — COMING SOON
+                {favorite
+                  ? '★ REMOVE FROM FAVORITES'
+                  : '☆ ADD TO FAVORITES'}
               </button>
 
             </div>

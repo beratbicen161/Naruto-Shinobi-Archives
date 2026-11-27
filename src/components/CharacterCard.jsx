@@ -1,10 +1,16 @@
+
 import { Link } from 'react-router-dom'
 import CharacterImage from './CharacterImage'
 import { getVillageTheme } from '../utils/villageThemes'
 import { formatValue } from '../utils/formatters'
+import { useFavorites } from '../context/FavoritesContext'
 
 function CharacterCard({ character }) {
   const theme = getVillageTheme(character)
+
+  const { isFavorite, toggleFavorite } = useFavorites()
+
+  const favorite = isFavorite(character.id)
 
   const affiliation = character.personal?.affiliation
 
@@ -63,6 +69,41 @@ function CharacterCard({ character }) {
         />
 
         <div className="shinobi-image-overlay" />
+
+        <button
+          type="button"
+          onClick={() => toggleFavorite(character)}
+          aria-pressed={favorite}
+          aria-label={
+            favorite
+              ? `Remove ${character.name} from favorites`
+              : `Add ${character.name} to favorites`
+          }
+          title={
+            favorite
+              ? 'Remove from favorites'
+              : 'Add to favorites'
+          }
+          className={`absolute right-3 top-3 z-30 flex h-11 w-11 items-center justify-center rounded-full border backdrop-blur-md transition-all duration-300 hover:scale-110 active:scale-95 ${
+            favorite
+              ? 'border-yellow-400 bg-yellow-400/20 text-yellow-400 shadow-[0_0_18px_rgba(250,204,21,0.5)]'
+              : 'border-white/30 bg-black/60 text-white hover:border-yellow-400 hover:text-yellow-400'
+          }`}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill={favorite ? 'currentColor' : 'none'}
+            stroke="currentColor"
+            strokeWidth="1.7"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-6 w-6"
+            aria-hidden="true"
+          >
+            <path d="m12 3 2.8 5.7 6.3.9-4.55 4.45 1.07 6.28L12 17.36l-5.62 2.97 1.07-6.28L2.9 9.6l6.3-.9L12 3Z" />
+          </svg>
+        </button>
 
         <div className="shinobi-village-symbol">
           {theme.symbol}
