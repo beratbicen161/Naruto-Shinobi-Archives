@@ -1,7 +1,9 @@
 
 import { Routes, Route } from 'react-router-dom'
+
 import Navbar from './components/Navbar'
 import PageTransition from './components/PageTransition'
+
 import Home from './pages/Home'
 import Characters from './pages/Characters'
 import CharacterDetail from './pages/CharacterDetail'
@@ -10,8 +12,9 @@ import ClanDetail from './pages/ClanDetail'
 import Villages from './pages/Villages'
 import VillageDetail from './pages/VillageDetail'
 import BingoBook from './pages/BingoBook'
-import Favorites from './pages/Favorites'
 import WatchGuide from './pages/WatchGuide'
+import Favorites from './pages/Favorites'
+import BattleArena from './pages/BattleArena'
 
 function App() {
   return (
@@ -21,7 +24,6 @@ function App() {
       <PageTransition />
 
       <Routes>
-
         <Route path="/" element={<Home />} />
 
         <Route
@@ -69,6 +71,10 @@ function App() {
           element={<Favorites />}
         />
 
+        <Route
+          path="/battle-arena"
+          element={<BattleArena />}
+        />
       </Routes>
     </>
   )
