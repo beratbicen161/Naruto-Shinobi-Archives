@@ -1,5 +1,4 @@
-
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import BattleCharacterSelector from '../components/BattleCharacterSelector'
 import BattleFormSelector from '../components/BattleFormSelector'
 import BattleEffects from '../components/BattleEffects'
@@ -21,42 +20,48 @@ const locations = [
     id: 'valley',
     name: 'Valley of the End',
     symbol: '谷',
-    image: `${imagePath}valley-of-the-end.png`,
+    image: `${imagePath}valley-of-the-end.webp`,
+    thumbnail: `${imagePath}valley-of-the-end-thumb.webp`,
     color: '#38BDF8',
   },
   {
     id: 'chunin',
     name: 'Chunin Arena',
     symbol: '闘',
-    image: `${imagePath}chunin-arena.png`,
+    image: `${imagePath}chunin-arena.webp`,
+    thumbnail: `${imagePath}chunin-arena-thumb.webp`,
     color: '#F97316',
   },
   {
     id: 'forest',
     name: 'Forest of Death',
     symbol: '森',
-    image: `${imagePath}forest-of-death.png`,
+    image: `${imagePath}forest-of-death.webp`,
+    thumbnail: `${imagePath}forest-of-death-thumb.webp`,
     color: '#22C55E',
   },
   {
     id: 'training',
     name: 'Konoha Training Ground',
     symbol: '木',
-    image: `${imagePath}konoha-training.png`,
+    image: `${imagePath}konoha-training.webp`,
+    thumbnail: `${imagePath}konoha-training-thumb.webp`,
     color: '#84CC16',
   },
   {
     id: 'sand',
     name: 'Hidden Sand Village',
     symbol: '砂',
-    image: `${imagePath}hidden-sand.png`,
+    image: `${imagePath}hidden-sand.webp`,
+    thumbnail: `${imagePath}hidden-sand-thumb.webp`,
     color: '#EAB308',
   },
   {
     id: 'war',
     name: 'Great Ninja War',
     symbol: '忍',
-    image: `${imagePath}great-ninja-war.png`,
+    image: `${imagePath}great-ninja-war.webp`,
+    thumbnail: `${imagePath}great-ninja-war-thumb.webp`,
     color: '#A855F7',
   },
 ]
@@ -81,10 +86,7 @@ function CardDissolve({ progress, color }) {
     >
       {dissolveParticles.map(particle => {
         const distance = progress * particle.speed
-
-        const x =
-          Math.cos(particle.angle) * distance
-
+        const x = Math.cos(particle.angle) * distance
         const y =
           Math.sin(particle.angle) * distance -
           progress * 45
@@ -156,11 +158,7 @@ function getCardMotion(frame, side) {
     frame.phase !== 'battle' ||
     frame.stage === 'victory'
   ) {
-    return {
-      x: 0,
-      y: 0,
-      rotation: 0,
-    }
+    return { x: 0, y: 0, rotation: 0 }
   }
 
   let x = 0
@@ -169,61 +167,27 @@ function getCardMotion(frame, side) {
 
   switch (frame.stage) {
     case 'first-clash':
-      x =
-        direction *
-        Math.sin(progress * Math.PI * 4) *
-        14
-
+      x = direction * Math.sin(progress * Math.PI * 4) * 14
       y = Math.sin(time * 6) * 4
-
-      rotation =
-        direction *
-        Math.sin(time * 5) *
-        2
-
+      rotation = direction * Math.sin(time * 5) * 2
       break
 
     case 'signature-jutsu':
-      x =
-        direction *
-        Math.sin(progress * Math.PI) *
-        10
-
+      x = direction * Math.sin(progress * Math.PI) * 10
       y = Math.sin(time * 3) * 5
-
-      rotation =
-        direction *
-        Math.sin(time * 3) *
-        1.5
-
+      rotation = direction * Math.sin(time * 3) * 1.5
       break
 
     case 'ultimate-clash':
-      x =
-        direction *
-        (12 + Math.sin(time * 6) * 5)
-
+      x = direction * (12 + Math.sin(time * 6) * 5)
       y = Math.sin(time * 5) * 4
-
-      rotation =
-        direction * impact * 3
-
+      rotation = direction * impact * 3
       break
 
     case 'final-impact':
-      x =
-        direction *
-        Math.sin(progress * Math.PI) *
-        20
-
-      y =
-        -Math.sin(progress * Math.PI) * 6
-
-      rotation =
-        direction *
-        Math.sin(progress * Math.PI) *
-        3
-
+      x = direction * Math.sin(progress * Math.PI) * 20
+      y = -Math.sin(progress * Math.PI) * 6
+      rotation = direction * Math.sin(progress * Math.PI) * 3
       break
 
     default:
@@ -260,20 +224,16 @@ function FighterCard({
     ? getCharacterForms(fighter.character.name).length
     : 0
 
-  const isCharging =
-    frame.phase === 'countdown'
+  const isCharging = frame.phase === 'countdown'
 
   const isVictory =
-    frame.stage === 'victory' ||
-    frame.finished
+    frame.stage === 'victory' || frame.finished
 
   const isBattling =
-    frame.phase === 'battle' &&
-    !isVictory
+    frame.phase === 'battle' && !isVictory
 
   const isWinner =
-    isVictory &&
-    frame.winner === side
+    isVictory && frame.winner === side
 
   const isDefeated =
     isVictory &&
@@ -281,8 +241,7 @@ function FighterCard({
     frame.winner !== side
 
   const isDraw =
-    isVictory &&
-    frame.winner === 'draw'
+    isVictory && frame.winner === 'draw'
 
   const victoryProgress = frame.finished
     ? 1
@@ -310,22 +269,17 @@ function FighterCard({
 
   return (
     <div className="relative w-full max-w-[240px] min-w-0">
-
       <div className="mb-1.5 flex flex-wrap items-center justify-between gap-1">
-
         <p className={`text-[10px] font-bold tracking-widest ${accent}`}>
           PLAYER {isFirst ? '01' : '02'}
         </p>
 
         <p
           className="text-[10px] font-bold tabular-nums"
-          style={{
-            color: getHPColor(hp),
-          }}
+          style={{ color: getHPColor(hp) }}
         >
           HP {hp}/100
         </p>
-
       </div>
 
       <div
@@ -347,15 +301,13 @@ function FighterCard({
       </div>
 
       <div className="relative">
-
         {(isCharging || isBattling) && (
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -inset-3 rounded-3xl blur-xl motion-reduce:hidden"
             style={{
               backgroundColor: auraColor,
-              opacity:
-                (frame.intensity || 0.3) * 0.45,
+              opacity: (frame.intensity || 0.3) * 0.45,
             }}
           />
         )}
@@ -376,7 +328,6 @@ function FighterCard({
             '--card-scale': cardScale,
           }}
         >
-
           <button
             type="button"
             onClick={onSelect}
@@ -393,16 +344,13 @@ function FighterCard({
                   ? 'border-orange-500 bg-orange-950/70 shadow-[0_0_25px_rgba(249,115,22,0.3)]'
                   : 'border-indigo-500 bg-indigo-950/70 shadow-[0_0_25px_rgba(99,102,241,0.3)]'
             } ${
-              locked
-                ? 'cursor-default'
-                : 'cursor-pointer'
+              locked ? 'cursor-default' : 'cursor-pointer'
             } motion-safe:blur-(--dissolve-blur)`}
             style={{
               opacity: cardOpacity,
               '--dissolve-blur': `${dissolveProgress * 8}px`,
             }}
           >
-
             {fighter ? (
               <>
                 <FighterPortrait
@@ -422,8 +370,7 @@ function FighterCard({
                     className="pointer-events-none absolute inset-0 motion-reduce:hidden"
                     style={{
                       boxShadow: `inset 0 0 ${
-                        15 +
-                        (frame.stageProgress || 0) * 40
+                        15 + (frame.stageProgress || 0) * 40
                       }px ${auraColor}`,
                     }}
                   />
@@ -435,8 +382,7 @@ function FighterCard({
                     className="pointer-events-none absolute inset-0 motion-reduce:hidden"
                     style={{
                       boxShadow: `inset 0 0 35px ${auraColor}`,
-                      opacity:
-                        (frame.impact || 0) * 0.6,
+                      opacity: (frame.impact || 0) * 0.6,
                     }}
                   />
                 )}
@@ -454,11 +400,8 @@ function FighterCard({
                 )}
 
                 <div className="absolute inset-x-0 bottom-0 p-2 text-center">
-
                   <p className={`text-[9px] font-bold uppercase tracking-wider sm:text-[10px] ${
-                    isWinner
-                      ? 'text-yellow-300'
-                      : accent
+                    isWinner ? 'text-yellow-300' : accent
                   }`}>
                     {fighter.form.name}
                   </p>
@@ -466,7 +409,6 @@ function FighterCard({
                   <h3 className="mt-1 text-xs leading-relaxed text-white sm:text-base">
                     {fighter.character.name}
                   </h3>
-
                 </div>
               </>
             ) : (
@@ -483,14 +425,8 @@ function FighterCard({
                   className={`relative mb-2 size-10 transition-transform group-hover:scale-110 sm:size-14 ${accent}`}
                   aria-hidden="true"
                 >
-                  <circle
-                    cx="50"
-                    cy="32"
-                    r="17"
-                  />
-
+                  <circle cx="50" cy="32" r="17" />
                   <path d="M18 86 Q18 56 50 56 Q82 56 82 86 Z" />
-
                   <circle
                     cx="50"
                     cy="50"
@@ -509,9 +445,7 @@ function FighterCard({
                 </p>
               </>
             )}
-
           </button>
-
         </div>
 
         {isDefeated && dissolveProgress < 1 && (
@@ -528,7 +462,6 @@ function FighterCard({
             disabled={locked}
             className="absolute inset-0 flex flex-col items-center justify-center rounded-xl border border-dashed border-gray-500/40 bg-black/40 p-2 backdrop-blur-sm transition-colors enabled:hover:border-orange-400 disabled:cursor-default"
           >
-
             <span className="text-5xl text-gray-500/60">
               忍
             </span>
@@ -546,42 +479,28 @@ function FighterCard({
                 Select another shinobi
               </p>
             )}
-
           </button>
         )}
-
       </div>
 
       <div className={`mt-2 rounded-lg border bg-black/75 p-2.5 text-center backdrop-blur-md transition-all duration-700 ${
-        isWinner
-          ? 'border-yellow-400/60'
-          : 'border-white/15'
+        isWinner ? 'border-yellow-400/60' : 'border-white/15'
       } ${
-        isDefeated
-          ? 'opacity-40'
-          : 'opacity-100'
+        isDefeated ? 'opacity-40' : 'opacity-100'
       }`}>
-
         <div className="flex flex-wrap items-center justify-between gap-1">
-
           <p className="text-[9px] tracking-wider text-gray-300">
             POWER LEVEL
           </p>
 
           <p className={`text-xl font-bold ${
-            isWinner
-              ? 'text-yellow-400'
-              : accent
+            isWinner ? 'text-yellow-400' : accent
           }`}>
-            {fighter
-              ? fighter.form.power
-              : '—'}
+            {fighter ? fighter.form.power : '—'}
           </p>
-
         </div>
 
         <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-white/10">
-
           <div
             className={`h-full rounded-full transition-all duration-500 ${
               isWinner
@@ -596,17 +515,13 @@ function FighterCard({
                 : '0%',
             }}
           />
-
         </div>
 
         {fighter ? (
           <>
             <p
               className="mt-1.5 text-[10px] font-bold"
-              style={{
-                color:
-                  tier?.color || '#9CA3AF',
-              }}
+              style={{ color: tier?.color || '#9CA3AF' }}
             >
               {tier?.name}
             </p>
@@ -624,24 +539,18 @@ function FighterCard({
             No shinobi selected
           </p>
         )}
-
       </div>
 
       <button
         type="button"
         onClick={onChangeForm}
-        disabled={
-          locked ||
-          !fighter ||
-          formCount <= 1
-        }
+        disabled={locked || !fighter || formCount <= 1}
         className={`mt-2 flex w-full items-center justify-center gap-2 rounded-lg border px-2 py-2 text-[9px] font-bold tracking-wider backdrop-blur-md transition-all disabled:cursor-not-allowed disabled:opacity-30 sm:text-[10px] ${
           isFirst
             ? 'border-orange-500/50 bg-orange-950/80 text-orange-400 hover:bg-orange-900/80'
             : 'border-indigo-500/50 bg-indigo-950/80 text-indigo-400 hover:bg-indigo-900/80'
         }`}
       >
-
         <svg
           viewBox="0 0 24 24"
           fill="none"
@@ -664,9 +573,7 @@ function FighterCard({
             {formCount}
           </span>
         )}
-
       </button>
-
     </div>
   )
 }
@@ -675,31 +582,86 @@ function BattlefieldBackground({
   selectedLocation,
   frame,
 }) {
+  const [visibleLocation, setVisibleLocation] =
+    useState(selectedLocation)
+
+  const [visitedLocations, setVisitedLocations] =
+    useState(() => [selectedLocation])
+
+  useEffect(() => {
+    if (selectedLocation === visibleLocation) return
+
+    let cancelled = false
+
+    const location = locations.find(
+      item => item.id === selectedLocation
+    )
+
+    if (!location) return
+
+    const image = new Image()
+
+    image.onload = () => {
+      if (cancelled) return
+
+      setVisitedLocations(previous =>
+        previous.includes(selectedLocation)
+          ? previous
+          : [...previous, selectedLocation]
+      )
+    }
+
+    image.src = location.image
+
+    return () => {
+      cancelled = true
+      image.onload = null
+    }
+  }, [selectedLocation, visibleLocation])
+
+  useEffect(() => {
+    if (
+      selectedLocation === visibleLocation ||
+      !visitedLocations.includes(selectedLocation)
+    ) {
+      return
+    }
+
+    let secondFrame
+
+    const firstFrame = requestAnimationFrame(() => {
+      secondFrame = requestAnimationFrame(() => {
+        setVisibleLocation(selectedLocation)
+      })
+    })
+
+    return () => {
+      cancelAnimationFrame(firstFrame)
+
+      if (secondFrame !== undefined) {
+        cancelAnimationFrame(secondFrame)
+      }
+    }
+  }, [
+    selectedLocation,
+    visibleLocation,
+    visitedLocations,
+  ])
+
   const isBattling =
     frame.phase === 'battle' &&
     frame.stage !== 'victory'
 
-  const time =
-    (frame.elapsed || 0) / 1000
-
-  const impact =
-    frame.impact || 0
-
-  const intensity =
-    frame.intensity || 0
+  const time = (frame.elapsed || 0) / 1000
+  const impact = frame.impact || 0
+  const intensity = frame.intensity || 0
 
   const shakeX = isBattling
-    ? Math.sin(time * 32) *
-      impact *
-      intensity *
-      3
+    ? Math.sin(time * 32) * impact * intensity * 3
     : 0
 
   const shakeY = isBattling
-    ? Math.cos(time * 27) *
-      impact *
-      intensity *
-      2
+    ? Math.cos(time * 27) * impact * intensity * 2
     : 0
 
   const zoom = isBattling
@@ -711,7 +673,6 @@ function BattlefieldBackground({
       className="pointer-events-none absolute inset-0 overflow-hidden"
       aria-hidden="true"
     >
-
       <div
         className="absolute inset-0 motion-safe:translate-x-(--shake-x) motion-safe:translate-y-(--shake-y) motion-safe:scale-(--arena-zoom)"
         style={{
@@ -720,21 +681,28 @@ function BattlefieldBackground({
           '--arena-zoom': zoom,
         }}
       >
-
-        {locations.map(location => (
-          <div
-            key={location.id}
-            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-700 motion-reduce:transition-none ${
-              selectedLocation === location.id
-                ? 'opacity-100'
-                : 'opacity-0'
-            }`}
-            style={{
-              backgroundImage: `url("${location.image}")`,
-            }}
-          />
-        ))}
-
+        {locations
+          .filter(location =>
+            visitedLocations.includes(location.id)
+          )
+          .map(location => (
+            <img
+              key={location.id}
+              src={location.image}
+              alt=""
+              fetchPriority={
+                location.id === visibleLocation
+                  ? 'high'
+                  : 'auto'
+              }
+              loading="eager"
+              className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-700 motion-reduce:transition-none ${
+                visibleLocation === location.id
+                  ? 'opacity-100'
+                  : 'opacity-0'
+              }`}
+            />
+          ))}
       </div>
 
       <div className="absolute inset-0 bg-black/30" />
@@ -748,9 +716,7 @@ function BattlefieldBackground({
       {isBattling && (
         <div
           className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,black_100%)]"
-          style={{
-            opacity: intensity * 0.4,
-          }}
+          style={{ opacity: intensity * 0.4 }}
         />
       )}
 
@@ -760,13 +726,11 @@ function BattlefieldBackground({
           style={{
             opacity:
               Math.sin(
-                (frame.stageProgress || 0) *
-                Math.PI
+                (frame.stageProgress || 0) * Math.PI
               ) * 0.5,
           }}
         />
       )}
-
     </div>
   )
 }
@@ -790,12 +754,13 @@ function BattleLocationCard({
           : 'border-white/10 hover:border-orange-500/60'
       }`}
     >
-
       <div className="relative h-14 overflow-hidden bg-[#202630] sm:h-[clamp(45px,7vh,75px)]">
-
         <img
-          src={location.image}
+          src={location.thumbnail}
           alt={location.name}
+          loading="lazy"
+          decoding="async"
+          fetchPriority="low"
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
 
@@ -803,9 +768,7 @@ function BattleLocationCard({
 
         <span
           className="absolute bottom-1 left-2 text-xl"
-          style={{
-            color: location.color,
-          }}
+          style={{ color: location.color }}
         >
           {location.symbol}
         </span>
@@ -815,7 +778,6 @@ function BattleLocationCard({
             ✓
           </span>
         )}
-
       </div>
 
       <div className={`flex min-h-8 items-center justify-center px-1 py-1.5 ${
@@ -823,53 +785,31 @@ function BattleLocationCard({
           ? 'bg-orange-950/60 text-orange-300'
           : 'bg-[#1B222C] text-gray-300'
       }`}>
-
         <p className="text-center text-[9px] font-bold leading-3 sm:text-[10px]">
           {location.name}
         </p>
-
       </div>
-
     </button>
   )
 }
 
 function BattleStageIndicator({ frame }) {
   const stages = [
-    {
-      id: 'first-clash',
-      name: 'Clash',
-    },
-    {
-      id: 'signature-jutsu',
-      name: 'Jutsu',
-    },
-    {
-      id: 'ultimate-clash',
-      name: 'Ultimate',
-    },
-    {
-      id: 'final-impact',
-      name: 'Final',
-    },
+    { id: 'first-clash', name: 'Clash' },
+    { id: 'signature-jutsu', name: 'Jutsu' },
+    { id: 'ultimate-clash', name: 'Ultimate' },
+    { id: 'final-impact', name: 'Final' },
   ]
 
-  const currentIndex =
-    stages.findIndex(
-      stage => stage.id === frame.stage
-    )
+  const currentIndex = stages.findIndex(
+    stage => stage.id === frame.stage
+  )
 
   return (
     <div className="mt-3 hidden w-full max-w-[200px] grid-cols-4 gap-1 sm:grid">
-
       {stages.map((stage, index) => (
-        <div
-          key={stage.id}
-          className="min-w-0"
-        >
-
+        <div key={stage.id} className="min-w-0">
           <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
-
             <div
               className={`h-full rounded-full ${
                 index === currentIndex
@@ -885,7 +825,6 @@ function BattleStageIndicator({ frame }) {
                       : '0%',
               }}
             />
-
           </div>
 
           <p className={`mt-1 text-center text-[8px] ${
@@ -895,10 +834,8 @@ function BattleStageIndicator({ frame }) {
           }`}>
             {stage.name}
           </p>
-
         </div>
       ))}
-
     </div>
   )
 }
@@ -912,13 +849,11 @@ function BattleCenter({
     Boolean(firstFighter && secondFighter)
 
   const isVictory =
-    frame.stage === 'victory' ||
-    frame.finished
+    frame.stage === 'victory' || frame.finished
 
   if (frame.phase === 'countdown') {
     return (
       <div className="relative flex flex-col items-center text-center">
-
         <p className="text-[10px] font-bold tracking-widest text-orange-300">
           CHAKRA CHARGING
         </p>
@@ -931,20 +866,17 @@ function BattleCenter({
         </p>
 
         <div className="h-1.5 w-full max-w-[140px] overflow-hidden rounded-full bg-black/70">
-
           <div
             className="h-full rounded-full bg-linear-to-r from-orange-600 to-yellow-300"
             style={{
               width: `${(frame.stageProgress || 0) * 100}%`,
             }}
           />
-
         </div>
 
         <p className="mt-2 hidden text-[10px] tracking-widest text-white sm:block">
           GET READY
         </p>
-
       </div>
     )
   }
@@ -962,7 +894,6 @@ function BattleCenter({
         aria-live="polite"
         className="relative flex w-full flex-col items-center text-center"
       >
-
         <span className="text-4xl text-yellow-400 drop-shadow-[0_0_20px_rgba(234,179,8,0.8)] sm:text-6xl">
           {winner ? '勝' : '引'}
         </span>
@@ -973,7 +904,6 @@ function BattleCenter({
 
         {winner && (
           <div className="mt-3 w-full rounded-lg border border-yellow-500/40 bg-black/75 p-2 backdrop-blur-md sm:p-3">
-
             <p className="text-xs font-bold text-yellow-300 sm:text-base">
               {winner.character.name}
             </p>
@@ -985,7 +915,6 @@ function BattleCenter({
             <p className="mt-2 text-xs font-bold text-yellow-400">
               {winner.form.power} POWER
             </p>
-
           </div>
         )}
 
@@ -996,15 +925,13 @@ function BattleCenter({
               ? 'Victory'
               : 'Equal Power'}
         </p>
-
       </div>
     )
   }
 
   if (frame.phase === 'battle') {
     const stageTitle =
-      frame.stageName ||
-      'BATTLE IN PROGRESS'
+      frame.stageName || 'BATTLE IN PROGRESS'
 
     const mainTitle =
       frame.stage === 'signature-jutsu'
@@ -1017,7 +944,6 @@ function BattleCenter({
 
     return (
       <div className="relative flex w-full flex-col items-center text-center">
-
         <p className="rounded bg-black/60 px-2 py-1 text-[9px] font-bold tracking-widest text-orange-300 sm:text-[10px]">
           {stageTitle}
         </p>
@@ -1031,31 +957,23 @@ function BattleCenter({
         </p>
 
         <div className="w-full max-w-[180px] overflow-hidden rounded-full border border-orange-500/40 bg-black/70">
-
           <div
             className="h-2 rounded-full bg-linear-to-r from-orange-700 to-yellow-400 transition-all duration-150"
-            style={{
-              width: `${frame.progress}%`,
-            }}
+            style={{ width: `${frame.progress}%` }}
           />
-
         </div>
 
         <p className="mt-2 text-xs font-bold tabular-nums text-white">
           {frame.progress}%
         </p>
 
-        <BattleStageIndicator
-          frame={frame}
-        />
-
+        <BattleStageIndicator frame={frame} />
       </div>
     )
   }
 
   return (
     <div className="flex flex-col items-center text-center">
-
       <span className="hidden text-[10px] font-bold uppercase tracking-[0.3em] text-white sm:block">
         SHINOBI CLASH
       </span>
@@ -1070,22 +988,17 @@ function BattleCenter({
         aria-live="polite"
         className="mt-3 rounded-lg border border-white/15 bg-black/65 px-2 py-2 backdrop-blur-md sm:px-4"
       >
-
         <p className={`text-[9px] font-bold uppercase tracking-wider sm:text-xs ${
-          bothSelected
-            ? 'text-green-400'
-            : 'text-gray-300'
+          bothSelected ? 'text-green-400' : 'text-gray-300'
         }`}>
           {bothSelected
             ? 'Ready to Battle'
             : 'Select your shinobi'}
         </p>
-
       </div>
 
       {bothSelected && (
         <div className="mt-3 hidden rounded-lg border border-white/10 bg-black/60 p-3 backdrop-blur-md sm:block">
-
           <p className="text-xs font-bold text-orange-400">
             {firstFighter.character.name}
           </p>
@@ -1105,10 +1018,8 @@ function BattleCenter({
           <p className="mt-1 text-[10px] text-gray-300">
             {secondFighter.form.name}
           </p>
-
         </div>
       )}
-
     </div>
   )
 }
@@ -1154,38 +1065,30 @@ function BattleArena() {
     musicEnabled,
   })
 
-  const currentLocation =
-    locations.find(
-      location =>
-        location.id === selectedLocation
-    )
+  const currentLocation = locations.find(
+    location => location.id === selectedLocation
+  )
 
   const bothSelected =
     Boolean(firstFighter && secondFighter)
 
   const isVictory =
-    frame.stage === 'victory' ||
-    frame.finished
+    frame.stage === 'victory' || frame.finished
 
   const hasWinner =
-    isVictory &&
-    frame.winner !== 'draw'
+    isVictory && frame.winner !== 'draw'
 
   function toggleSound() {
-    const nextEnabled =
-      !soundEnabled
+    const nextEnabled = !soundEnabled
 
     handleSoundToggle(nextEnabled)
-
     setSoundEnabled(nextEnabled)
   }
 
   function toggleMusic() {
-    const nextEnabled =
-      !musicEnabled
+    const nextEnabled = !musicEnabled
 
     handleMusicToggle(nextEnabled)
-
     setMusicEnabled(nextEnabled)
   }
 
@@ -1198,13 +1101,9 @@ function BattleArena() {
   function handleCharacterSelect(character) {
     if (isRunning) return
 
-    const forms =
-      getCharacterForms(character.name)
+    const forms = getCharacterForms(character.name)
 
-    if (
-      forms.length === 0 ||
-      !selectorSide
-    ) {
+    if (forms.length === 0 || !selectorSide) {
       return
     }
 
@@ -1217,8 +1116,7 @@ function BattleArena() {
       character,
       side: selectorSide,
       initialFormId:
-        currentFighter?.character.id ===
-        character.id
+        currentFighter?.character.id === character.id
           ? currentFighter.form.id
           : forms[0].id,
       mode: 'character',
@@ -1228,10 +1126,7 @@ function BattleArena() {
   }
 
   function handleFormConfirm(fighter) {
-    if (
-      !pendingSelection ||
-      isRunning
-    ) {
+    if (!pendingSelection || isRunning) {
       return
     }
 
@@ -1239,9 +1134,7 @@ function BattleArena() {
 
     if (pendingSelection.side === 'first') {
       setFirstFighter(fighter)
-    } else if (
-      pendingSelection.side === 'second'
-    ) {
+    } else if (pendingSelection.side === 'second') {
       setSecondFighter(fighter)
     }
 
@@ -1269,12 +1162,8 @@ function BattleArena() {
   function handleFormBack() {
     if (!pendingSelection) return
 
-    if (
-      pendingSelection.mode === 'character'
-    ) {
-      setSelectorSide(
-        pendingSelection.side
-      )
+    if (pendingSelection.mode === 'character') {
+      setSelectorSide(pendingSelection.side)
     }
 
     setPendingSelection(null)
@@ -1298,10 +1187,7 @@ function BattleArena() {
   }
 
   function handleStartBattle() {
-    if (
-      !bothSelected ||
-      isRunning
-    ) {
+    if (!bothSelected || isRunning) {
       return
     }
 
@@ -1317,25 +1203,19 @@ function BattleArena() {
 
   return (
     <main className="relative isolate min-h-screen bg-[#10151D] text-[#F1E3C6]">
-
       <BattleBackgroundEffects />
 
       <div className="relative z-10 mx-auto max-w-[1500px] px-3 pb-3 pt-3 sm:px-6">
-
         <header className="relative mb-3 overflow-hidden rounded-xl border border-orange-500/20 bg-[#171D26] px-4 py-2.5">
-
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_left,rgba(249,115,22,0.12),transparent_65%)]" />
 
           <div className="relative flex flex-wrap items-center justify-between gap-3">
-
             <div className="flex items-center gap-3">
-
               <span className="text-3xl text-orange-500">
                 闘
               </span>
 
               <div>
-
                 <h1 className="text-base text-orange-400 sm:text-2xl">
                   SHINOBI BATTLE ARENA
                 </h1>
@@ -1343,23 +1223,18 @@ function BattleArena() {
                 <p className="mt-1 text-[9px] uppercase tracking-[0.2em] text-gray-400">
                   The Ultimate Shinobi Showdown
                 </p>
-
               </div>
-
             </div>
 
             <div className="flex flex-wrap items-center gap-3 sm:gap-5">
-
               {[
                 {
                   label: 'Shinobi',
-                  value:
-                    battleStatistics.totalCharacters,
+                  value: battleStatistics.totalCharacters,
                 },
                 {
                   label: 'Forms',
-                  value:
-                    battleStatistics.totalForms,
+                  value: battleStatistics.totalForms,
                 },
                 {
                   label: 'Locations',
@@ -1370,7 +1245,6 @@ function BattleArena() {
                   key={stat.label}
                   className="flex items-center gap-1.5"
                 >
-
                   <span className="text-base font-bold text-orange-400">
                     {stat.value}
                   </span>
@@ -1378,14 +1252,10 @@ function BattleArena() {
                   <span className="text-[10px] uppercase text-gray-400">
                     {stat.label}
                   </span>
-
                 </div>
               ))}
-
             </div>
-
           </div>
-
         </header>
 
         <section
@@ -1394,37 +1264,27 @@ function BattleArena() {
             borderColor: hasWinner
               ? '#EAB308'
               : `${currentLocation.color}66`,
-
             boxShadow: hasWinner
               ? '0 0 35px rgba(234,179,8,0.25)'
               : `0 0 25px ${currentLocation.color}15`,
           }}
         >
-
           <header className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 bg-[#10151D] px-3 py-2 sm:px-5">
-
             <div className="flex items-center gap-3">
-
               <div
                 className="flex size-9 items-center justify-center rounded-lg border bg-white/5 text-xl"
                 style={{
-                  color:
-                    currentLocation.color,
-                  borderColor:
-                    `${currentLocation.color}55`,
+                  color: currentLocation.color,
+                  borderColor: `${currentLocation.color}55`,
                 }}
               >
                 {currentLocation.symbol}
               </div>
 
               <div>
-
                 <p
                   className="text-[8px] font-bold tracking-[0.2em]"
-                  style={{
-                    color:
-                      currentLocation.color,
-                  }}
+                  style={{ color: currentLocation.color }}
                 >
                   BATTLE STAGE
                 </p>
@@ -1432,13 +1292,10 @@ function BattleArena() {
                 <h2 className="mt-1 text-xs sm:text-base">
                   {currentLocation.name}
                 </h2>
-
               </div>
-
             </div>
 
             <div className="flex gap-2">
-
               <button
                 type="button"
                 aria-pressed={soundEnabled}
@@ -1464,21 +1321,16 @@ function BattleArena() {
               >
                 MUSIC: {musicEnabled ? 'ON' : 'OFF'}
               </button>
-
             </div>
-
           </header>
 
           <div className="relative isolate overflow-hidden px-3 py-3 sm:px-8">
-
             <BattlefieldBackground
               selectedLocation={selectedLocation}
               frame={frame}
             />
 
-            <BattleEffects
-              frame={frame}
-            />
+            <BattleEffects frame={frame} />
 
             <JutsuEffects
               frame={frame}
@@ -1487,9 +1339,7 @@ function BattleArena() {
             />
 
             <div className="relative z-30 mx-auto grid max-w-5xl grid-cols-[minmax(0,1fr)_minmax(45px,0.65fr)_minmax(0,1fr)] items-start gap-2 sm:gap-6">
-
               <div className="flex min-w-0 justify-center">
-
                 <FighterCard
                   side="first"
                   fighter={firstFighter}
@@ -1503,21 +1353,17 @@ function BattleArena() {
                     handleChangeForm('first')
                   }
                 />
-
               </div>
 
               <div className="flex min-w-0 flex-col items-center justify-center self-center">
-
                 <BattleCenter
                   frame={frame}
                   firstFighter={firstFighter}
                   secondFighter={secondFighter}
                 />
-
               </div>
 
               <div className="flex min-w-0 justify-center">
-
                 <FighterCard
                   side="second"
                   fighter={secondFighter}
@@ -1531,17 +1377,12 @@ function BattleArena() {
                     handleChangeForm('second')
                   }
                 />
-
               </div>
-
             </div>
-
           </div>
 
           <section className="border-t border-white/10 bg-[#10151D] px-3 py-2.5 sm:px-5">
-
             <div className="mb-2 flex items-center justify-between gap-2">
-
               <h2 className="text-[10px] tracking-widest text-orange-400 sm:text-xs">
                 SELECT BATTLE LOCATION
               </h2>
@@ -1549,38 +1390,30 @@ function BattleArena() {
               <p className="text-[9px] text-gray-400">
                 {locations.length} Locations
               </p>
-
             </div>
 
             <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
-
               {locations.map(location => (
                 <BattleLocationCard
                   key={location.id}
                   location={location}
-                  active={
-                    selectedLocation === location.id
-                  }
+                  active={selectedLocation === location.id}
                   locked={isRunning}
                   onSelect={() =>
                     handleLocationSelect(location.id)
                   }
                 />
               ))}
-
             </div>
-
           </section>
 
           <section className="flex flex-wrap items-center justify-center gap-3 border-t border-orange-500/20 bg-[#171D26] px-3 py-2.5">
-
             <button
               type="button"
               onClick={resetFighters}
               disabled={
                 isRunning ||
-                (!firstFighter &&
-                  !secondFighter)
+                (!firstFighter && !secondFighter)
               }
               className="rounded-lg border border-white/15 bg-black/30 px-4 py-3 text-[10px] font-bold text-gray-300 transition-all hover:border-orange-500 hover:text-orange-400 disabled:cursor-not-allowed disabled:opacity-30 sm:px-6"
             >
@@ -1590,10 +1423,7 @@ function BattleArena() {
             <button
               type="button"
               onClick={handleStartBattle}
-              disabled={
-                !bothSelected ||
-                isRunning
-              }
+              disabled={!bothSelected || isRunning}
               className={`w-full max-w-sm rounded-lg border px-6 py-3 text-sm font-bold tracking-widest transition-all duration-300 sm:w-auto sm:min-w-[260px] ${
                 bothSelected && !isRunning
                   ? frame.finished
@@ -1611,32 +1441,26 @@ function BattleArena() {
 
             <p className="text-center text-[10px] text-gray-400">
               {isRunning
-                ? frame.stageName ||
-                  'Battle in progress'
+                ? frame.stageName || 'Battle in progress'
                 : frame.finished
                   ? 'Battle complete'
                   : bothSelected
                     ? 'Ready to battle'
                     : 'Select two shinobi'}
             </p>
-
           </section>
-
         </section>
 
         <p className="mt-2 text-center text-[9px] leading-4 text-gray-500">
           Fan-made arena power ratings. Not official Naruto statistics.
         </p>
-
       </div>
 
       {selectorSide && (
         <BattleCharacterSelector
           key={selectorSide}
           side={selectorSide}
-          onClose={() =>
-            setSelectorSide(null)
-          }
+          onClose={() => setSelectorSide(null)}
           onSelect={handleCharacterSelect}
         />
       )}
@@ -1646,17 +1470,12 @@ function BattleArena() {
           key={`${pendingSelection.side}-${pendingSelection.character.id}`}
           character={pendingSelection.character}
           side={pendingSelection.side}
-          initialFormId={
-            pendingSelection.initialFormId
-          }
-          onClose={() =>
-            setPendingSelection(null)
-          }
+          initialFormId={pendingSelection.initialFormId}
+          onClose={() => setPendingSelection(null)}
           onBack={handleFormBack}
           onConfirm={handleFormConfirm}
         />
       )}
-
     </main>
   )
 }

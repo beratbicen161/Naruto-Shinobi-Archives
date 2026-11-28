@@ -1,3 +1,4 @@
+
 import {
   useEffect,
   useState,
@@ -240,8 +241,6 @@ function BingoBook() {
   const [error, setError] = useState('')
   const [retryCount, setRetryCount] = useState(0)
 
-  const isIndex = currentPage < INDEX_PAGES
-
   const recordIndex = Math.floor(
     (currentPage - INDEX_PAGES) / 2
   )
@@ -325,18 +324,6 @@ function BingoBook() {
     if (page < 0 || page >= TOTAL_PAGES) return
 
     bookRef.current?.pageFlip()?.flip(page)
-  }
-
-  function nextPage() {
-    if (isFlipping) return
-
-    bookRef.current?.pageFlip()?.flipNext()
-  }
-
-  function previousPage() {
-    if (isFlipping) return
-
-    bookRef.current?.pageFlip()?.flipPrev()
   }
 
   function closeBook() {
@@ -717,39 +704,7 @@ function BingoBook() {
             DRAG THE PAGE CORNERS TO TURN
           </p>
 
-          <div className="bingo-navigation">
-            <button
-              onClick={previousPage}
-              disabled={currentPage === 0 || isFlipping}
-            >
-              ← PREVIOUS
-            </button>
-
-            <span>
-              {isIndex
-                ? `INDEX ${Math.floor(currentPage / 2) + 1} / 3`
-                : `${recordIndex + 1} / ${records.length}`}
-            </span>
-
-            <button
-              onClick={nextPage}
-              disabled={
-                currentPage >= TOTAL_PAGES - 2 ||
-                isFlipping
-              }
-            >
-              NEXT →
-            </button>
-          </div>
-
-          <div className="bingo-bottom-navigation">
-            <button
-              onClick={() => changePage(0)}
-              disabled={isFlipping}
-            >
-              TABLE OF CONTENTS
-            </button>
-
+          <div className="bingo-bottom-navigation flex justify-center">
             <button
               onClick={closeBook}
               disabled={isFlipping}
@@ -757,6 +712,7 @@ function BingoBook() {
               CLOSE BOOK
             </button>
           </div>
+
         </div>
       )}
     </main>

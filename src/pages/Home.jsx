@@ -11,7 +11,7 @@ function Home() {
       <section
         className="relative flex min-h-[85vh] items-center justify-center overflow-hidden px-6 py-20"
         style={{
-          backgroundImage: "url('/images/konoha-bg.png')",
+          backgroundImage: "url('/images/konoha-bg.webp')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

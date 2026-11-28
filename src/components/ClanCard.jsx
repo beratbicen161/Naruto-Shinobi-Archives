@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { getClanTheme } from '../utils/clanThemes'
+import ClanEmblem from './ClanEmblem'
 
 function ClanCard({ clan }) {
   const theme = getClanTheme(clan)
@@ -47,7 +48,15 @@ function ClanCard({ clan }) {
         </div>
 
         <div className="clan-core-symbol">
-          {theme.symbol}
+          <div
+            className="flex items-center justify-center"
+            style={{
+              color: theme.color,
+              filter: `drop-shadow(0 0 12px ${theme.color})`
+            }}
+          >
+            <ClanEmblem clan={clan} />
+          </div>
         </div>
 
         <div className="clan-core-particles">

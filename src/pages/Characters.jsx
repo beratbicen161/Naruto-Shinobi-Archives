@@ -5,6 +5,7 @@ import CharacterCard from '../components/CharacterCard'
 import LoadingScreen from '../components/LoadingScreen'
 import ErrorScreen from '../components/ErrorScreen'
 import EmptySearch from '../components/EmptySearch'
+import CharacterChakraBackground from '../components/CharacterChakraBackground'
 
 const PAGE_SIZE = 20
 
@@ -85,8 +86,11 @@ function Characters() {
   }
 
   return (
-    <main className="min-h-screen bg-[#15191F] px-5 py-16">
-      <div className="mx-auto max-w-7xl">
+    <main className="relative isolate min-h-screen overflow-hidden bg-[#15191F] px-5 py-16">
+
+      <CharacterChakraBackground />
+
+      <div className="relative z-10 mx-auto max-w-7xl">
 
         <div className="mb-12 text-center">
           <p className="mb-3 text-sm tracking-[0.3em] text-orange-400">

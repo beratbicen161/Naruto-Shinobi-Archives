@@ -1,10 +1,10 @@
-
 import { useState } from 'react'
 import { watchStatistics, episodeTypes } from '../data/watchGuide'
 import WatchOrder from '../components/WatchOrder'
 import FillerGuide from '../components/FillerGuide'
 import MovieGuide from '../components/MovieGuide'
 import WatchProgress from '../components/WatchProgress'
+import WatchGuideBackground from '../components/WatchGuideBackground'
 
 const tabs = [
   { id: 'order', label: 'Watch Order', symbol: '巻' },
@@ -63,12 +63,14 @@ function WatchGuide() {
   ]
 
   return (
-    <main className="min-h-screen bg-(--page-bg) text-(--text-primary)">
+    <main className="relative isolate min-h-screen overflow-hidden bg-(--page-bg) text-(--text-primary)">
+
+      <WatchGuideBackground />
 
       <section
-        className="relative flex min-h-[480px] items-center justify-center overflow-hidden bg-cover bg-center px-6 py-20"
+        className="relative z-10 flex min-h-[480px] items-center justify-center overflow-hidden bg-cover bg-center px-6 py-20"
         style={{
-          backgroundImage: `url('${import.meta.env.BASE_URL}images/konoha-bg.png')`,
+          backgroundImage: `url('${import.meta.env.BASE_URL}images/konoha-bg.webp')`,
         }}
       >
 
@@ -109,7 +111,7 @@ function WatchGuide() {
 
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <section className="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
 
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
 

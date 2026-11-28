@@ -4,6 +4,7 @@ import VillageCard from '../components/VillageCard'
 import LoadingScreen from '../components/LoadingScreen'
 import ErrorScreen from '../components/ErrorScreen'
 import EmptySearch from '../components/EmptySearch'
+import VillageHeadbandBackground from '../components/VillageHeadbandBackground'
 
 const PAGE_SIZE = 20
 
@@ -85,9 +86,11 @@ function Villages() {
   }
 
   return (
-    <main className="min-h-screen bg-[#15191F] px-5 py-16 text-[#F1E3C6]">
+    <main className="relative isolate min-h-screen overflow-hidden bg-[#15191F] px-5 py-16 text-[#F1E3C6]">
 
-      <div className="mx-auto max-w-7xl">
+      <VillageHeadbandBackground />
+
+      <div className="relative z-10 mx-auto max-w-7xl">
 
         <div className="mb-12 text-center">
 

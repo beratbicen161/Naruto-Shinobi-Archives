@@ -4,6 +4,7 @@ import ClanCard from '../components/ClanCard'
 import LoadingScreen from '../components/LoadingScreen'
 import ErrorScreen from '../components/ErrorScreen'
 import EmptySearch from '../components/EmptySearch'
+import ClanBackground from '../components/ClanBackground'
 
 const PAGE_SIZE = 20
 
@@ -72,9 +73,11 @@ function Clans() {
   }
 
   return (
-    <main className="min-h-screen bg-[#15191F] px-5 py-16 text-[#F1E3C6]">
+    <main className="relative isolate min-h-screen overflow-hidden bg-[#15191F] px-5 py-16 text-[#F1E3C6]">
 
-      <div className="mx-auto max-w-7xl">
+      <ClanBackground />
+
+      <div className="relative z-10 mx-auto max-w-7xl">
 
         <div className="mb-12 text-center">
           <p className="mb-3 text-sm font-bold tracking-[0.4em] text-orange-500">
