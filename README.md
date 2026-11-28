@@ -5,6 +5,14 @@
 
 > Enter the Shinobi World — The Will of Fire Lives On.
 
+## 🌐 Live Demo
+
+**Live Website:** [Naruto Shinobi Archives](https://naruto-shinobi-archives.vercel.app/)
+
+**GitHub Repository:** [Source Code](https://github.com/beratbicen161/Naruto-Shinobi-Archives)
+
+The application is deployed on Vercel and publicly accessible without installation.
+
 ## 📖 About the Project
 
 Naruto Shinobi Archives is an interactive, responsive, and API-driven wiki dedicated to the Naruto and Naruto Shippuden universe.
@@ -128,6 +136,7 @@ Battle statistics and power levels are fan-made and do not represent official Na
 | Local Storage | Favorites, preferences, and watch progress |
 | Git | Version control |
 | GitHub | Source code hosting |
+| Vercel | Production deployment and hosting |
 
 ## 🌐 Public APIs
 
@@ -200,7 +209,9 @@ Naruto-Shinobi-Archives/
 │   └── main.jsx
 ├── index.html
 ├── package.json
+├── package-lock.json
 ├── vite.config.js
+├── vercel.json
 └── README.md
 ```
 
@@ -242,6 +253,30 @@ npm run build
 npm run preview
 ```
 
+## ☁️ Deployment
+
+The application is deployed on Vercel using its GitHub integration.
+
+| Configuration | Value |
+|---|---|
+| Hosting Platform | Vercel |
+| Framework Preset | Vite |
+| Production Branch | main |
+| Root Directory | ./ |
+| Build Command | npm run build |
+| Output Directory | dist |
+| Environment Variables | Not required |
+
+The project includes a `vercel.json` configuration to support React Router and client-side navigation.
+
+This configuration allows users to access individual pages directly and refresh pages without encountering server-side 404 errors for valid application routes.
+
+New commits pushed to the main branch automatically trigger a new production deployment through the Vercel GitHub integration.
+
+**Production URL:**
+
+https://naruto-shinobi-archives.vercel.app/
+
 ## ⚡ Performance Optimization
 
 The application includes several performance improvements:
@@ -268,6 +303,8 @@ The application supports:
 - Mobile devices
 
 Layouts, navigation, cards, and interactive components adapt to different screen sizes.
+
+The Bingo Book uses an adaptive page layout for smaller screens.
 
 ## 👨‍💻 Developer
 
