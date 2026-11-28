@@ -1,163 +1,298 @@
-# Naruto Shinobi Archives
 
-An interactive Naruto and Naruto Shippuden Wiki developed for the SE 3355 Web Programming Midterm Project.
+# 🍥 Naruto Shinobi Archives
 
-## Project Overview
+![Naruto Shinobi Archives](docs/screenshots/home.png)
 
-Naruto Shinobi Archives allows users to explore the Naruto universe through an interactive, responsive, and themed web application. The project combines public API integration with custom React components, animations, and additional interactive features.
+> Enter the Shinobi World — The Will of Fire Lives On.
 
-## Technologies Used
+## 📖 About the Project
 
-- React
-- Vite
-- Tailwind CSS
-- JavaScript
-- React Router
-- Context API
-- LocalStorage
-- React PageFlip
-- Git and GitHub
+Naruto Shinobi Archives is an interactive, responsive, and API-driven wiki dedicated to the Naruto and Naruto Shippuden universe.
 
-## Main Features
+The project was developed as a midterm project for the SE3355 course at Yaşar University. Its purpose is to demonstrate frontend development with React, Tailwind CSS, and JSON-based data retrieval from public web APIs.
 
-### Home
+The application combines a detailed shinobi encyclopedia with interactive features, custom animations, a watching guide, and a battle simulation system.
 
-- Introduction to the Naruto universe
-- Featured shinobi
-- Interactive navigation
-- Random shinobi summoning system
+## ✨ Main Features
 
-### Characters
+- API-driven character, clan, and village archives
+- Dynamic character, clan, and village detail pages
+- Search, filtering, and pagination
+- Naruto and Naruto Shippuden character filtering
+- Random Shinobi Summoning
+- Favorite character collection
+- Interactive 3D Bingo Book
+- Anime and movie watching guide
+- Filler episode filtering
+- Personal watch progress tracking
+- Interactive Shinobi Battle Arena
+- Light and Dark Mode
+- Responsive navigation and layouts
+- Custom Naruto-themed animations
+- Sound effects and background music
+- Loading, error, and empty-state interfaces
+- Local storage integration
 
-- API-based character listing
-- Character search and pagination
-- Dynamic character detail pages
-- Favorite character management
-- Naruto and Naruto Shippuden scope filtering
+## 🖼️ Application Screenshots
 
-### Clans
+### 1. Home Page
 
-- Clan archive
-- Clan search
-- Dynamic clan details
-- Registered clan members
-- Animated clan-themed backgrounds
+Explore the Naruto universe through a cinematic Konoha-themed homepage with animated elements and interactive navigation.
 
-### Villages
+![Home Page](docs/screenshots/home.png)
 
-- Village archive
-- Village search
-- Dynamic village details
-- Territory-themed cards
-- Animated village backgrounds
+### 2. Shinobi Characters
 
-### Bingo Book
+Browse character records, search for specific shinobi, explore detailed information, and save your favorite characters.
 
-- Interactive book with 40 shinobi records
-- Realistic page-turning animations
+![Characters](docs/screenshots/characters.png)
+
+### 3. Shinobi Clans
+
+Discover 58 clan records with themed cards, clan symbols, animated chakra effects, and registered members.
+
+![Clans](docs/screenshots/clans.png)
+
+### 4. Shinobi Villages
+
+Explore 39 village records through parchment-style territory cards, village information, and animated ninja headbands.
+
+![Villages](docs/screenshots/villages.png)
+
+### 5. Bingo Book
+
+An interactive intelligence archive inspired by the Bingo Book from the Naruto universe.
+
+- 40 shinobi records
+- Interactive page-turning animations
+- Confidential character dossiers
+- Character classifications
+- Illustrative bounty rewards
 - Page-turning sound effects
-- Classified character dossiers
-- API-based character information
 
-### Watch Guide
+![Bingo Book](docs/screenshots/bingo-book.png)
 
-- Naruto and Naruto Shippuden watch order
-- Guide covering 720 episodes and 10 movies
+### 6. Watch Guide
+
+A comprehensive watching guide for Naruto and Naruto Shippuden.
+
+- 720 anime episodes
+- 2 anime series
+- 10 movies
 - Canon and filler classifications
-- Movie information retrieved from Kitsu API
+- Recommended watching order
+- Movie information
 - Personal watch progress tracking
 
-### Favorites
+![Watch Guide](docs/screenshots/watch-guide.png)
 
-- Add and remove favorite characters
-- Search saved characters
-- Persistent storage using LocalStorage
+### 7. Favorites
 
-### Shinobi Battle Arena
+Create a personal shinobi collection by saving your favorite characters.
 
-- 50 supported shinobi with 97 character forms
-- Six selectable battle locations
-- Character power comparison
-- Dynamic HP bars
-- Animated battle simulation
-- Background music and sound effects
+Favorites are stored locally and remain available after refreshing the application.
 
-## API Integration
+![Favorites](docs/screenshots/favorites.png)
 
-The application uses the following public APIs:
+### 8. Shinobi Battle Arena
 
-- Dattebayo API: https://dattebayo-api.onrender.com
-- Kitsu API: https://kitsu.io/api/edge
+An interactive, fan-made battle simulation system.
 
-API responses are used to populate character, clan, village, and movie information. Loading states, error handling, and retry mechanisms are included.
+- 50 shinobi with defined battle statistics
+- 97 character forms
+- 6 battle locations
+- Character and transformation selection
+- Dynamic health bars
+- Power level calculations
+- Animated battle stages
+- Jutsu-inspired visual effects
+- Battle music and sound effects
+- Victory and draw results
 
-## Project Structure
+Battle statistics and power levels are fan-made and do not represent official Naruto power rankings.
 
-- `src/components` — Reusable UI components
-- `src/pages` — Application pages
-- `src/services` — API integration and application services
-- `src/context` — Global state management
-- `src/hooks` — Custom React hooks
-- `src/data` — Additional feature data
-- `src/utils` — Utility functions
-- `public/images` — Image assets
-- `public/sounds` — Audio assets
+![Battle Arena](docs/screenshots/battle-arena.png)
 
-## Installation
+## 🛠️ Technologies Used
 
-Clone the repository:
+| Technology | Purpose |
+|---|---|
+| React | Component-based frontend development |
+| JavaScript | Application logic and interactivity |
+| Tailwind CSS | Styling and responsive design |
+| Vite | Development server and production builds |
+| React Router | Client-side routing |
+| React PageFlip | Interactive book animations |
+| SVG | Custom symbols and visual effects |
+| Web Audio API | Battle sound effects |
+| Local Storage | Favorites, preferences, and watch progress |
+| Git | Version control |
+| GitHub | Source code hosting |
 
-`git clone https://github.com/beratbicen161/Naruto-Shinobi-Archives.git`
+## 🌐 Public APIs
 
-Navigate to the project directory:
+### Dattebayo API
 
-`cd Naruto-Shinobi-Archives`
+Used to retrieve Naruto universe data, including:
 
-Install dependencies:
+- Characters
+- Clans
+- Villages
+- Character images
+- Personal information
+- Ninja ranks
+- Jutsu information
+- Affiliations
 
-`npm install`
+API: https://dattebayo-api.onrender.com
 
-Start the development server:
+### Kitsu API
 
-`npm run dev`
+Used to retrieve anime movie information, including:
 
-## Production Build
+- Movie posters
+- Descriptions
+- Ratings
+- Release dates
+- Movie durations
 
-Create a production build:
+API: https://kitsu.io/api/edge
 
-`npm run build`
+## ⚛️ React Concepts
 
-Preview the production build:
+The project demonstrates the following React concepts:
 
-`npm run preview`
+- Functional components
+- Reusable components
+- Props
+- useState
+- useEffect
+- useRef
+- Context API
+- Custom hooks
+- Conditional rendering
+- Dynamic list rendering
+- Event handling
+- Client-side routing
+- Dynamic route parameters
+- Asynchronous API requests
+- State management
+- Lazy loading
 
-## Responsive Design
+## 📂 Project Structure
 
-The application supports desktop, tablet, and mobile layouts. It includes responsive navigation, flexible grids, and light and dark themes.
+```text
+Naruto-Shinobi-Archives/
+├── docs/
+│   └── screenshots/
+├── public/
+│   ├── images/
+│   └── sounds/
+├── src/
+│   ├── components/
+│   ├── context/
+│   ├── data/
+│   ├── hooks/
+│   ├── pages/
+│   ├── services/
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── index.html
+├── package.json
+├── vite.config.js
+└── README.md
+```
 
-## Performance Optimization
+## 🚀 Installation and Setup
+
+### Clone the repository
+
+```bash
+git clone https://github.com/beratbicen161/Naruto-Shinobi-Archives.git
+```
+
+### Navigate to the project directory
+
+```bash
+cd Naruto-Shinobi-Archives
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Start the development server
+
+```bash
+npm run dev
+```
+
+### Create a production build
+
+```bash
+npm run build
+```
+
+### Preview the production build
+
+```bash
+npm run preview
+```
+
+## ⚡ Performance Optimization
+
+The application includes several performance improvements:
 
 - WebP image optimization
-- Lazy loading of selected images
-- Optimized image delivery
-- Font loading improvements
-- Lighthouse performance testing
-- Reduced-motion support in selected animations
+- Optimized logo assets
+- Lazy loading of images
+- Route-based code splitting
+- Image loading prioritization
+- Optimized font loading
+- API response caching
+- Reduced-motion support
 
-## Disclaimer
+Desktop Lighthouse performance scores of 95 or higher were achieved on tested pages, including Home and Watch Guide, during local production testing.
 
-This is an unofficial, non-commercial educational fan project inspired by Naruto and Naruto Shippuden.
+Performance results may vary depending on the device, network connection, and external API availability.
 
-Naruto characters, artwork, music, and related intellectual property belong to their respective rights holders.
+## 📱 Responsive Design
 
-Battle Arena power ratings and unofficial Bingo Book bounty values are fan-made and are not official Naruto statistics.
+The application supports:
 
-## Repository
+- Desktop computers
+- Tablets
+- Mobile devices
 
-https://github.com/beratbicen161/Naruto-Shinobi-Archives
+Layouts, navigation, cards, and interactive components adapt to different screen sizes.
 
-## Course
+## 👨‍💻 Developer
 
-SE 3355 — Web Programming
+**Berat Biçen**
 
-Midterm Project — Fall 2026
+- University: Yaşar University
+- Department: Software Engineering
+- Course: SE3355
+- Project: Midterm Project
+- Academic Year: 2026–2027
+
+GitHub: https://github.com/beratbicen161
+
+## ⚠️ Disclaimer
+
+This is an unofficial, non-commercial educational fan project.
+
+Naruto, Naruto Shippuden, their characters, and related intellectual property belong to their respective copyright holders.
+
+Character information and external images are provided by third-party APIs. Some images or records may be unavailable due to external API limitations.
+
+Battle statistics, illustrative bounty values, and selected decorative symbols are fan-made.
+
+---
+
+<p align="center">
+  <strong>忍 — THE WILL OF FIRE LIVES ON — 忍</strong>
+</p>
